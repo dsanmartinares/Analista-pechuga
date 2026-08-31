@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fondo redondeado -->
+  <rect width="512" height="512" rx="110" fill="#111827"/>
+  <!-- Círculo exterior (gauge) -->
+  <circle cx="256" cy="230" r="130" fill="none" stroke="#1e293b" stroke-width="24"/>
+  <circle cx="256" cy="230" r="130" fill="none" stroke="#e63946" stroke-width="24"
+    stroke-dasharray="490" stroke-dashoffset="163"
+    stroke-linecap="round"
+    transform="rotate(-90 256 230)"/>
+  <!-- % texto -->
+  <text x="256" y="218" text-anchor="middle"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="72" font-weight="800" fill="#e63946">35</text>
+  <text x="256" y="263" text-anchor="middle"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="30" font-weight="700" fill="#9ca3af">PECHUGA</text>
+  <!-- Línea separadora -->
+  <rect x="80" y="390" width="352" height="6" rx="3" fill="#1e293b"/>
+  <!-- Texto app -->
+  <text x="256" y="452" text-anchor="middle"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="36" font-weight="700" fill="#6b7280" letter-spacing="2">ANALISTA</text>
+</svg>
