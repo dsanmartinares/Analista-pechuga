@@ -12,253 +12,189 @@
 <link rel="manifest" href="manifest.json">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-
 :root{
-  --bg:#f1f5f9;
-  --card:#ffffff;
-  --primary:#111827;
-  --primary-mid:#1e293b;
-  --red:#e63946;
-  --blue:#2563eb;
-  --green:#16a34a;
-  --amber:#d97706;
-  --text:#111827;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --radius:14px;
+  --bg:#f1f5f9;--card:#fff;--primary:#111827;--primary-mid:#1e293b;
+  --red:#e63946;--blue:#2563eb;--green:#16a34a;--amber:#d97706;
+  --text:#111827;--muted:#6b7280;--border:#e5e7eb;--radius:14px;
 }
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto}
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  max-width:480px;
-  margin:0 auto;
-}
+/* HEADER */
+.header{background:var(--primary);color:#fff;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hdr-icon{font-size:26px;line-height:1}
+.hdr-title{font-size:17px;font-weight:700;letter-spacing:.3px}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px}
+.ver-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;
+  letter-spacing:.5px;font-family:monospace}
 
-/* ─── HEADER ─── */
-.header{
-  background:var(--primary);
-  color:#fff;
-  padding:14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 8px rgba(0,0,0,.35);
-}
-.header-left{display:flex;align-items:center;gap:10px}
-.header-icon{font-size:26px;line-height:1}
-.header-title{font-size:17px;font-weight:700;letter-spacing:.3px}
-.header-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px}
-.version-badge{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.2);
-  padding:4px 10px;border-radius:20px;
-  font-size:12px;font-weight:700;letter-spacing:.5px;
-  font-family:monospace;
-}
+.install-tip{background:var(--primary-mid);color:rgba(255,255,255,.65);
+  font-size:11px;text-align:center;padding:7px 16px;letter-spacing:.2px}
+.install-tip span{opacity:.45;margin:0 4px}
 
-/* ─── INSTALL TIP ─── */
-.install-tip{
-  background:var(--primary-mid);
-  color:rgba(255,255,255,.7);
-  font-size:11px;
-  text-align:center;
-  padding:7px 16px;
-  letter-spacing:.2px;
-}
-.install-tip span{opacity:.5;margin:0 4px}
+/* MAIN */
+.main{padding:14px 14px 40px;display:flex;flex-direction:column;gap:14px}
 
-/* ─── MAIN ─── */
-.main{
-  padding:14px 14px 36px;
-  display:flex;flex-direction:column;gap:14px;
-}
+/* CARDS */
+.card{background:var(--card);border-radius:var(--radius);padding:18px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08),0 2px 12px rgba(0,0,0,.05)}
+.card-label{font-size:11px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 
-/* ─── CARDS ─── */
-.card{
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:18px;
-  box-shadow:0 1px 4px rgba(0,0,0,.08),0 2px 12px rgba(0,0,0,.05);
-}
-.card-label{
-  font-size:11px;font-weight:700;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--muted);
-  margin-bottom:14px;
-}
-
-/* ─── CAPTURE BUTTONS ─── */
+/* CAPTURE */
 .capture-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.btn-cap{
-  background:var(--primary);
-  color:#fff;border:none;border-radius:10px;
-  padding:16px 8px;font-size:14px;font-weight:600;
-  cursor:pointer;display:flex;flex-direction:column;
-  align-items:center;gap:8px;transition:opacity .15s;
-}
+.btn-cap{background:var(--primary);color:#fff;border:none;border-radius:10px;
+  padding:16px 8px;font-size:14px;font-weight:600;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .15s}
 .btn-cap:active{opacity:.75}
 .btn-cap .ico{font-size:30px}
 
-/* ─── PREVIEW ─── */
-.preview-wrap{
-  width:100%;min-height:200px;border-radius:10px;
+/* PREVIEW */
+.preview-wrap{width:100%;min-height:180px;border-radius:10px;
   background:#f8fafc;border:2px dashed var(--border);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview-wrap img{width:100%;display:block}
-.preview-ph{text-align:center;padding:40px 20px;color:var(--muted)}
-.preview-ph .ico{font-size:48px;display:block;margin-bottom:8px}
+.preview-ph{text-align:center;padding:36px 20px;color:var(--muted)}
+.preview-ph .ico{font-size:44px;display:block;margin-bottom:8px}
 .preview-ph p{font-size:13px;line-height:1.5}
 
-/* ─── ANALYZE BUTTON ─── */
-.btn-analyze{
-  width:100%;margin-top:14px;
-  background:var(--red);color:#fff;
-  border:none;border-radius:10px;
-  padding:17px;font-size:16px;font-weight:700;
-  cursor:pointer;letter-spacing:.4px;
-  transition:opacity .15s,transform .1s;
-  display:none;
-}
+/* FORM SECTION */
+.form-section{display:none;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field label{font-size:11px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--muted)}
+.form-field input,.form-field select{
+  width:100%;padding:11px 12px;border:1.5px solid var(--border);
+  border-radius:9px;font-size:15px;color:var(--text);
+  background:#fff;appearance:none;-webkit-appearance:none;
+  outline:none;transition:border-color .15s;font-family:inherit}
+.form-field input:focus,.form-field select:focus{border-color:#6b7280}
+.form-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+
+/* ANALYZE BTN */
+.btn-analyze{width:100%;margin-top:14px;background:var(--red);color:#fff;
+  border:none;border-radius:10px;padding:17px;font-size:16px;font-weight:700;
+  cursor:pointer;letter-spacing:.4px;transition:opacity .15s,transform .1s;display:none}
 .btn-analyze:active{opacity:.85;transform:scale(.98)}
 .btn-analyze:disabled{background:#9ca3af;cursor:not-allowed}
 
-/* ─── RESULTS ─── */
+/* RESULTS */
 #resultsCard{display:none}
-
-.gauge-row{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.gauge-row{display:flex;align-items:center;gap:18px;margin-bottom:16px}
 .gauge{position:relative;width:110px;height:110px;flex-shrink:0}
 .gauge svg{transform:rotate(-90deg)}
 .gauge-bg{fill:none;stroke:#e5e7eb;stroke-width:10}
-.gauge-fill{
-  fill:none;stroke-width:10;stroke-linecap:round;
-  transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1),stroke .3s;
-}
-.gauge-center{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:1px;
-}
+.gauge-fill{fill:none;stroke-width:10;stroke-linecap:round;
+  transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1),stroke .3s}
+.gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1px}
 .gauge-pct{font-size:22px;font-weight:800;line-height:1}
-.gauge-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-
+.gauge-lbl{font-size:10px;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.5px}
 .stats-col{flex:1;display:flex;flex-direction:column;gap:12px}
-.stat-block{}
 .stat-row{display:flex;align-items:center;gap:8px}
 .stat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.stat-name{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.stat-name{font-size:11px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.6px}
 .stat-val{font-size:24px;font-weight:800;line-height:1.1;margin-top:1px}
-
-.cov-section{margin-top:4px}
-.cov-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.cov-lbl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .cov-label{font-size:11px;color:var(--muted);font-weight:600}
 .cov-val{font-size:12px;font-weight:700}
 .progress-track{width:100%;height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden}
 .progress-fill{height:100%;border-radius:3px;transition:width .6s ease,background .3s}
-.cov-warning{
-  display:none;margin-top:8px;padding:8px 10px;border-radius:8px;
-  background:#fef9c3;border:1px solid #fde047;
-  font-size:12px;color:#713f12;line-height:1.4;
-}
-
-.divider{height:1px;background:var(--border);margin:16px 0}
-
-.seg-label{
-  font-size:11px;font-weight:700;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--muted);
-  margin-bottom:10px;
-}
+.cov-warning{display:none;margin-top:8px;padding:8px 10px;border-radius:8px;
+  background:#fef9c3;border:1px solid #fde047;font-size:12px;color:#713f12;line-height:1.4}
+.result-meta{background:#f8fafc;border-radius:10px;padding:10px 12px;
+  margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.meta-item{display:flex;flex-direction:column;gap:2px}
+.meta-lbl{font-size:10px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--muted)}
+.meta-val{font-size:13px;font-weight:600;color:var(--text)}
+.divider{height:1px;background:var(--border);margin:14px 0}
+.seg-label{font-size:11px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 #segCanvas{width:100%;border-radius:10px;display:block}
 .legend{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
 .leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
 .leg-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.result-time{font-size:11px;color:var(--muted);margin-top:10px;text-align:right}
 
-.result-time{font-size:11px;color:var(--muted);margin-top:12px;text-align:right}
-
-/* ─── HISTORY ─── */
-.hist-header{
-  display:flex;align-items:center;justify-content:space-between;
-  cursor:pointer;user-select:none;
-}
-.hist-header .card-label{margin-bottom:0}
-.hist-toggle-btn{
-  background:none;border:none;color:var(--muted);
-  font-size:16px;cursor:pointer;padding:4px;
-}
+/* HISTORY */
+.hist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+.hist-top .card-label{margin-bottom:0}
+.hist-actions{display:flex;align-items:center;gap:8px}
+.btn-excel{background:#16a34a;color:#fff;border:none;border-radius:8px;
+  padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:5px;letter-spacing:.3px;transition:opacity .15s}
+.btn-excel:active{opacity:.8}
+.btn-excel .ico{font-size:14px}
+.hist-toggle-btn{background:none;border:none;color:var(--muted);
+  font-size:16px;cursor:pointer;padding:4px}
 #histItems{margin-top:14px}
 .hist-empty{font-size:13px;color:var(--muted);text-align:center;padding:16px 0}
-.hist-item{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 0;border-bottom:1px solid var(--border);
-}
+.hist-item{display:flex;align-items:center;gap:12px;
+  padding:11px 0;border-bottom:1px solid var(--border)}
 .hist-item:last-of-type{border-bottom:none}
-.hist-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0}
-.hist-thumb-ph{
-  width:48px;height:48px;border-radius:8px;background:#f1f5f9;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
-}
-.hist-info{flex:1;display:flex;flex-direction:column;gap:2px}
-.hist-pct{font-size:18px;font-weight:800}
+.hist-thumb{width:50px;height:50px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.hist-thumb-ph{width:50px;height:50px;border-radius:8px;background:#f1f5f9;
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.hist-info{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.hist-operario{font-size:14px;font-weight:700;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hist-meta{font-size:11px;color:var(--muted)}
 .hist-date{font-size:11px;color:var(--muted)}
-.hist-grasa{text-align:right;font-size:16px;font-weight:700;color:var(--blue);flex-shrink:0}
-.hist-grasa span{display:block;font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.btn-ghost{
-  background:none;border:1px solid var(--border);color:var(--muted);
+.hist-right{text-align:right;flex-shrink:0}
+.hist-pct-pechuga{font-size:18px;font-weight:800}
+.hist-pct-grasa{font-size:12px;font-weight:600;color:var(--blue)}
+.hist-pct-lbl{font-size:10px;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.4px}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);
   border-radius:8px;padding:7px 14px;font-size:12px;cursor:pointer;
-  width:100%;margin-top:10px;transition:background .15s;
-}
+  width:100%;margin-top:10px;transition:background .15s}
 .btn-ghost:active{background:#f1f5f9}
 
-/* ─── LOADING ─── */
-.loading-overlay{
-  display:none;position:fixed;inset:0;
+/* LOADING */
+.loading-overlay{display:none;position:fixed;inset:0;
   background:rgba(0,0,0,.65);z-index:500;
-  align-items:center;justify-content:center;flex-direction:column;gap:14px;
-}
+  align-items:center;justify-content:center;flex-direction:column;gap:14px}
 .loading-overlay.active{display:flex}
-.spinner{
-  width:48px;height:48px;border:4px solid rgba(255,255,255,.2);
-  border-top-color:#fff;border-radius:50%;
-  animation:spin .75s linear infinite;
-}
+.spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,.2);
+  border-top-color:#fff;border-radius:50%;animation:spin .75s linear infinite}
 .loading-txt{color:#fff;font-size:15px;font-weight:600;letter-spacing:.3px}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
-<!-- Loading -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
-  <div class="loading-txt">Analizando imagen…</div>
+  <div class="loading-txt" id="loadingTxt">Analizando imagen…</div>
 </div>
 
-<!-- Header -->
 <div class="header">
-  <div class="header-left">
-    <div class="header-icon">🍗</div>
+  <div class="hdr-left">
+    <div class="hdr-icon">🍗</div>
     <div>
-      <div class="header-title">Analista Pechuga</div>
-      <div class="header-sub">Control de mermas · DOLZ</div>
+      <div class="hdr-title">Analista Pechuga</div>
+      <div class="hdr-sub">Control de mermas · DOLZ</div>
     </div>
   </div>
-  <div class="version-badge" id="versionBadge">v1.0</div>
+  <div class="ver-badge" id="verBadge">v2.0</div>
 </div>
 
 <div class="install-tip">
   iOS: Compartir<span>›</span>Añadir a inicio &nbsp;|&nbsp; Android: instalar desde el banner
 </div>
 
-<!-- Main -->
 <div class="main">
 
-  <!-- Card: Captura -->
+  <!-- CAPTURA -->
   <div class="card">
     <div class="card-label">📷 Nueva muestra</div>
     <div class="capture-row">
@@ -269,23 +205,60 @@ body{
         <span class="ico">🖼️</span>Galería
       </button>
     </div>
+
     <div class="preview-wrap" id="preview">
       <div class="preview-ph">
         <span class="ico">📦</span>
         <p>Sube o fotografía la merma<br>de recortes de pechuga</p>
       </div>
     </div>
+
+    <!-- Formulario — visible solo tras cargar foto -->
+    <div class="form-section" id="formSection">
+      <div class="form-field">
+        <label>Nombre Operario</label>
+        <input type="text" id="inpOperario" placeholder="Ej: Juan García" autocomplete="off" autocorrect="off">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Posición en Línea</label>
+          <select id="selPosicion">
+            <option value="">—</option>
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Lado Línea</label>
+          <select id="selLado">
+            <option value="">—</option>
+            <option>Izquierda</option>
+            <option>Derecha</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
     <button class="btn-analyze" id="btnAnalyze" onclick="analyzeImage()">
       Analizar →
     </button>
   </div>
 
-  <!-- Card: Resultados -->
+  <!-- RESULTADOS -->
   <div class="card" id="resultsCard">
     <div class="card-label">📊 Resultado</div>
 
+    <!-- Metadatos del registro -->
+    <div class="result-meta" id="resultMeta">
+      <div class="meta-item"><div class="meta-lbl">Operario</div><div class="meta-val" id="metaOperario">—</div></div>
+      <div class="meta-item"><div class="meta-lbl">Fecha / Hora</div><div class="meta-val" id="metaFecha">—</div></div>
+      <div class="meta-item"><div class="meta-lbl">Posición</div><div class="meta-val" id="metaPosicion">—</div></div>
+      <div class="meta-item"><div class="meta-lbl">Lado</div><div class="meta-val" id="metaLado">—</div></div>
+    </div>
+
     <div class="gauge-row">
-      <!-- Gauge circular -->
       <div class="gauge">
         <svg width="110" height="110" viewBox="0 0 110 110">
           <circle class="gauge-bg" cx="55" cy="55" r="46"/>
@@ -299,24 +272,23 @@ body{
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="stats-col">
-        <div class="stat-block">
+        <div>
           <div class="stat-row">
-            <div class="stat-dot" style="background:var(--red)"></div>
+            <div class="stat-dot" style="background:#e63946"></div>
             <div class="stat-name">Pechuga</div>
           </div>
-          <div class="stat-val" id="valPechuga" style="color:var(--red)">--%</div>
+          <div class="stat-val" id="valPechuga" style="color:#e63946">--%</div>
         </div>
-        <div class="stat-block">
+        <div>
           <div class="stat-row">
-            <div class="stat-dot" style="background:var(--blue)"></div>
+            <div class="stat-dot" style="background:#2563eb"></div>
             <div class="stat-name">Grasa / OK</div>
           </div>
-          <div class="stat-val" id="valGrasa" style="color:var(--blue)">--%</div>
+          <div class="stat-val" id="valGrasa" style="color:#2563eb">--%</div>
         </div>
-        <div class="cov-section">
-          <div class="cov-label-row">
+        <div>
+          <div class="cov-lbl-row">
             <span class="cov-label">Cobertura análisis</span>
             <span class="cov-val" id="covVal">--%</span>
           </div>
@@ -328,87 +300,101 @@ body{
     </div>
 
     <div class="cov-warning" id="covWarning">
-      ⚠️ Poca superficie de merma visible. Para mejor precisión, fotografía la caja con más contenido o más cerca.
+      ⚠️ Poca superficie de merma visible. Para mejor precisión, fotografía la caja con más contenido o desde más cerca.
     </div>
 
     <div class="divider"></div>
-
-    <!-- Segmentación visual -->
     <div class="seg-label">🎨 Segmentación visual</div>
     <canvas id="segCanvas"></canvas>
     <div class="legend">
-      <div class="leg-item">
-        <div class="leg-dot" style="background:#e63946"></div>
-        Pechuga (merma)
-      </div>
-      <div class="leg-item">
-        <div class="leg-dot" style="background:#2563eb"></div>
-        Grasa / recorte correcto
-      </div>
-      <div class="leg-item">
-        <div class="leg-dot" style="background:#9ca3af"></div>
-        Fondo (excluido)
-      </div>
+      <div class="leg-item"><div class="leg-dot" style="background:#e63946"></div>Pechuga (merma)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#2563eb"></div>Grasa / correcto</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#9ca3af"></div>Fondo (excluido)</div>
     </div>
-
-    <div class="result-time" id="resultTime"></div>
   </div>
 
-  <!-- Card: Historial -->
+  <!-- HISTORIAL -->
   <div class="card">
-    <div class="hist-header" onclick="toggleHistory()">
+    <div class="hist-top">
       <div class="card-label" style="margin-bottom:0">📋 Historial</div>
-      <button class="hist-toggle-btn" id="histToggle">▼</button>
+      <div class="hist-actions">
+        <button class="btn-excel" onclick="exportToExcel()">
+          <span class="ico">📊</span>Exportar Excel
+        </button>
+        <button class="hist-toggle-btn" id="histToggle" onclick="toggleHistory()">▼</button>
+      </div>
     </div>
-    <div id="histItems">
-      <div class="hist-empty">Sin registros aún</div>
-    </div>
+    <div id="histItems"><div class="hist-empty">Sin registros aún</div></div>
   </div>
 
 </div><!-- /main -->
 
-<!-- Hidden inputs -->
 <input type="file" id="camInput" accept="image/*" capture="environment"
   style="display:none" onchange="onFileChosen(event)">
 <input type="file" id="galInput" accept="image/*"
   style="display:none" onchange="onFileChosen(event)">
-
-<!-- Hidden processing canvas -->
 <canvas id="procCanvas" style="display:none"></canvas>
 
 <script>
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
    CONFIG
-══════════════════════════════════════════ */
-const APP_VERSION  = 'v1.0';
-const HISTORY_KEY  = 'analista_pechuga_v1';
-const MAX_HISTORY  = 30;
-const MAX_PX       = 900;   // max side px for analysis
+═══════════════════════════════════════════ */
+const APP_VERSION  = 'v2.0';
+const HISTORY_KEY  = 'analista_pechuga_v1'; // misma clave → conserva historial v1
+const DEFAULTS_KEY = 'analista_form_defaults';
+const MAX_HISTORY  = 50;
+const MAX_PX       = 900;
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
    STATE
-══════════════════════════════════════════ */
-let pendingDataUrl  = null;
-let historyOpen     = true;
+═══════════════════════════════════════════ */
+let pendingDataUrl = null;
+let historyOpen    = true;
 
-/* ══════════════════════════════════════════
-   HELPERS
-══════════════════════════════════════════ */
-const $  = id => document.getElementById(id);
-const show = id => $(id).style.display = '';
-const hide = id => $(id).style.display = 'none';
-
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  $('versionBadge').textContent = APP_VERSION;
+  document.getElementById('verBadge').textContent = APP_VERSION;
+  loadFormDefaults();
   renderHistory();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
 });
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════ */
+const $    = id => document.getElementById(id);
+const show = id => $(id).style.display = '';
+const hide = id => $(id).style.display = 'none';
+
+/* ═══════════════════════════════════════════
+   FORM DEFAULTS — persiste entre sesiones
+═══════════════════════════════════════════ */
+function saveFormDefaults() {
+  try {
+    localStorage.setItem(DEFAULTS_KEY, JSON.stringify({
+      operario: $('inpOperario').value,
+      posicion: $('selPosicion').value,
+      lado:     $('selLado').value
+    }));
+  } catch(e) {}
+}
+
+function loadFormDefaults() {
+  try {
+    const d = JSON.parse(localStorage.getItem(DEFAULTS_KEY) || '{}');
+    if (d.operario) $('inpOperario').value = d.operario;
+    if (d.posicion) $('selPosicion').value = d.posicion;
+    if (d.lado)     $('selLado').value     = d.lado;
+  } catch(e) {}
+}
+
+/* ═══════════════════════════════════════════
    FILE / CAMERA
-══════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 function openCamera()  { $('camInput').click(); }
 function openGallery() { $('galInput').click(); }
 
@@ -429,27 +415,26 @@ function loadPreview(dataUrl) {
   img.src = dataUrl;
   img.style.cssText = 'width:100%;border-radius:8px;display:block;';
   wrap.appendChild(img);
-  $('btnAnalyze').style.display = 'block';
+  $('formSection').style.display = 'flex';
+  $('btnAnalyze').style.display  = 'block';
   hide('resultsCard');
 }
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
    COLOR CLASSIFICATION  (espacio HSL)
    ─────────────────────────────────────────
    Contexto: merma de pechuga DOLZ
    · Fondo: caja amarilla DOLZ + bolsa rojo-naranja
-   · Grasa (correcto):  blanco/crema, S baja, L alta
-   · Pechuga (merma):   rosa-salmón,  S moderada, L media-alta
-══════════════════════════════════════════ */
+   · Grasa (correcto):  blanco/crema  → S baja, L alta
+   · Pechuga (merma):   rosa-salmón   → S moderada, L media
+═══════════════════════════════════════════ */
 function rgbToHsl(r, g, b) {
   r /= 255; g /= 255; b /= 255;
-  const mx = Math.max(r, g, b);
-  const mn = Math.min(r, g, b);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
   let h, s;
   const l = (mx + mn) / 2;
-  if (mx === mn) {
-    h = s = 0;
-  } else {
+  if (mx === mn) { h = s = 0; }
+  else {
     const d = mx - mn;
     s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
     switch (mx) {
@@ -464,117 +449,108 @@ function rgbToHsl(r, g, b) {
 function classifyPixel(r, g, b) {
   const [h, s, l] = rgbToHsl(r, g, b);
 
-  // ── Excluir fondo ──────────────────────────────
-  // Caja amarilla DOLZ (tono amarillo-verde, muy saturado)
-  if (h >= 38 && h <= 68 && s > 38 && l > 33)  return 'bg';
-  // Bolsa plástico rojo-naranja (S alta → diferencia clave con la carne)
-  if (s > 56 && (h <= 35 || h >= 330))           return 'bg';
-  // Cualquier color muy saturado (artefactos, reflejos de plástico)
-  if (s > 65)                                    return 'bg';
-  // Sombras oscuras
-  if (l < 13)                                    return 'bg';
-  // Sobreexposición / reflejos especulares del plástico
-  if (l > 91)                                    return 'bg';
+  /* ── Excluir fondo ── */
+  if (h >= 38 && h <= 68 && s > 38 && l > 33) return 'bg'; // caja amarilla DOLZ
+  if (s > 56 && (h <= 35 || h >= 330))         return 'bg'; // bolsa plástico roja
+  if (s > 65)                                  return 'bg'; // cualquier color muy saturado
+  if (l < 13)                                  return 'bg'; // sombras oscuras
+  if (l > 91)                                  return 'bg'; // sobreexposición/reflejos
 
-  // ── Grasa / recorte correcto ───────────────────
-  // Blanco-crema: saturación baja, luminosidad media-alta
-  if (s < 18 && l >= 42)                         return 'grasa';
-  if (s < 30 && l >= 70)                         return 'grasa';
+  /* ── Grasa / recorte correcto ── */
+  if (s < 18 && l >= 42)                       return 'grasa'; // blanco-crema puro
+  if (s < 30 && l >= 70)                       return 'grasa'; // blanco con leve tinte
 
-  // ── Pechuga (carne rosa-salmón) ────────────────
-  // Tono rosa: zona hue que cruza 0°/360° (rojo-rosa-magenta)
+  /* ── Pechuga (carne rosa-salmón) ── */
   const isPink = (h >= 318 || h <= 28);
   if (isPink && s >= 9 && s <= 56 && l >= 40 && l <= 84) return 'pechuga';
-
-  // Rosa-malva tenue (algunos trozos bajo iluminación fría)
+  // Rosa-malva tenue (iluminación fría)
   if (h >= 295 && h < 318 && s >= 9 && s <= 38 && l >= 44 && l <= 78) return 'pechuga';
 
-  return 'bg'; // incerto → excluir del cálculo
+  return 'bg';
 }
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
    PIXEL PROCESSING
-══════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 function processPixels(imageData, w, h) {
   const src     = imageData.data;
   const overlay = new Uint8ClampedArray(src.length);
-  let nPechuga  = 0;
-  let nGrasa    = 0;
+  let nPechuga  = 0, nGrasa = 0;
 
   for (let i = 0; i < src.length; i += 4) {
-    const r = src[i], g = src[i + 1], b = src[i + 2];
+    const r = src[i], g = src[i+1], b = src[i+2];
     const cls = classifyPixel(r, g, b);
-
     if (cls === 'pechuga') {
       nPechuga++;
-      // Overlay rojo: mezcla original con rojo intenso
-      overlay[i]     = Math.min(255, r * 0.35 + 195);
-      overlay[i + 1] = Math.round(g * 0.35);
-      overlay[i + 2] = Math.round(b * 0.35);
-      overlay[i + 3] = 255;
+      overlay[i]   = Math.min(255, r * 0.35 + 195);
+      overlay[i+1] = Math.round(g * 0.35);
+      overlay[i+2] = Math.round(b * 0.35);
+      overlay[i+3] = 255;
     } else if (cls === 'grasa') {
       nGrasa++;
-      // Overlay azul: mezcla original con azul
-      overlay[i]     = Math.round(r * 0.35);
-      overlay[i + 1] = Math.round(g * 0.35);
-      overlay[i + 2] = Math.min(255, b * 0.35 + 195);
-      overlay[i + 3] = 255;
+      overlay[i]   = Math.round(r * 0.35);
+      overlay[i+1] = Math.round(g * 0.35);
+      overlay[i+2] = Math.min(255, b * 0.35 + 195);
+      overlay[i+3] = 255;
     } else {
-      // Fondo: atenuar para enfocar la atención en el contenido
-      overlay[i]     = Math.round(r * 0.50);
-      overlay[i + 1] = Math.round(g * 0.50);
-      overlay[i + 2] = Math.round(b * 0.50);
-      overlay[i + 3] = 255;
+      overlay[i]   = Math.round(r * 0.50);
+      overlay[i+1] = Math.round(g * 0.50);
+      overlay[i+2] = Math.round(b * 0.50);
+      overlay[i+3] = 255;
     }
   }
 
   const nTotal      = w * h;
   const nClassified = nPechuga + nGrasa;
-  const pctPechuga  = nClassified > 0 ? (nPechuga / nClassified) * 100 : 0;
-  const pctGrasa    = nClassified > 0 ? (nGrasa   / nClassified) * 100 : 0;
-  const coverage    = nTotal     > 0 ? (nClassified / nTotal)    * 100 : 0;
-
-  return { pctPechuga, pctGrasa, coverage, overlay };
+  return {
+    pctPechuga: nClassified > 0 ? (nPechuga / nClassified) * 100 : 0,
+    pctGrasa:   nClassified > 0 ? (nGrasa   / nClassified) * 100 : 0,
+    coverage:   nTotal      > 0 ? (nClassified / nTotal)   * 100 : 0,
+    overlay
+  };
 }
 
-/* ══════════════════════════════════════════
-   MAIN ANALYSIS FLOW
-══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   ANÁLISIS PRINCIPAL
+═══════════════════════════════════════════ */
 function analyzeImage() {
   if (!pendingDataUrl) return;
+
+  // Capturar valores del formulario
+  const operario = $('inpOperario').value.trim();
+  const posicion = $('selPosicion').value;
+  const lado     = $('selLado').value;
+  saveFormDefaults();
+
   $('loadingOverlay').classList.add('active');
   $('btnAnalyze').disabled = true;
 
-  // Dar tiempo al navegador para mostrar el overlay antes del bloqueo
   setTimeout(() => {
     const img = new Image();
     img.onload = () => {
       try {
-        // Escalar para análisis
         const [w, h] = scaledDims(img.width, img.height, MAX_PX);
         const proc   = $('procCanvas');
-        proc.width   = w;
-        proc.height  = h;
+        proc.width   = w; proc.height = h;
         const ctx    = proc.getContext('2d');
         ctx.drawImage(img, 0, 0, w, h);
 
         const imgData = ctx.getImageData(0, 0, w, h);
         const result  = processPixels(imgData, w, h);
 
-        // Dibujar segmentación
-        const seg  = $('segCanvas');
-        seg.width  = w;
-        seg.height = h;
-        const sCtx = seg.getContext('2d');
-        sCtx.putImageData(new ImageData(result.overlay, w, h), 0, 0);
+        // Segmentación visual
+        const seg     = $('segCanvas');
+        seg.width     = w; seg.height = h;
+        seg.getContext('2d').putImageData(new ImageData(result.overlay, w, h), 0, 0);
 
-        displayResults(result);
-        saveHistory(result, pendingDataUrl);
-      } catch (err) {
+        const timestamp = new Date().toISOString();
+        displayResults(result, { operario, posicion, lado, timestamp });
+        saveHistory({ ...result, operario, posicion, lado, timestamp }, pendingDataUrl);
+
+      } catch(err) {
         console.error(err);
         alert('Error al procesar la imagen. Inténtalo de nuevo.');
       }
-
       $('loadingOverlay').classList.remove('active');
       $('btnAnalyze').disabled = false;
     };
@@ -588,81 +564,75 @@ function scaledDims(w, h, maxPx) {
   return [Math.round(w * r), Math.round(h * r)];
 }
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════════
    DISPLAY RESULTS
-══════════════════════════════════════════ */
-function displayResults(result) {
+═══════════════════════════════════════════ */
+function displayResults(result, meta) {
   const { pctPechuga, pctGrasa, coverage } = result;
+  const { operario, posicion, lado, timestamp } = meta;
 
   show('resultsCard');
 
-  // Color semáforo según % pechuga
-  const color = pctPechuga > 35 ? 'var(--red)' :
-                pctPechuga > 20 ? 'var(--amber)' :
-                                   'var(--green)';
+  // Color semáforo
+  const color = pctPechuga > 35 ? '#e63946' : pctPechuga > 20 ? '#d97706' : '#16a34a';
 
-  // Gauge SVG (2π×46 ≈ 289)
+  // Gauge (C = 2π×46 ≈ 289)
   const C = 2 * Math.PI * 46;
-  const offset = C * (1 - pctPechuga / 100);
-  $('gaugeFill').style.stroke           = color.replace('var(--','').replace(')','');
-  // Forzar el color directamente
-  const colorMap = {'var(--red)':'#e63946','var(--amber)':'#d97706','var(--green)':'#16a34a'};
-  $('gaugeFill').style.stroke           = colorMap[color] || '#e63946';
-  $('gaugeFill').style.strokeDasharray  = C;
-  $('gaugeFill').style.strokeDashoffset = offset;
-  $('gaugePct').textContent   = pctPechuga.toFixed(1) + '%';
-  $('gaugePct').style.color   = colorMap[color] || '#e63946';
+  $('gaugeFill').style.stroke            = color;
+  $('gaugeFill').style.strokeDasharray   = C;
+  $('gaugeFill').style.strokeDashoffset  = C * (1 - pctPechuga / 100);
+  $('gaugePct').textContent  = pctPechuga.toFixed(1) + '%';
+  $('gaugePct').style.color  = color;
 
-  // Valores
   $('valPechuga').textContent  = pctPechuga.toFixed(1) + '%';
-  $('valPechuga').style.color  = colorMap[color] || '#e63946';
+  $('valPechuga').style.color  = color;
   $('valGrasa').textContent    = pctGrasa.toFixed(1) + '%';
 
-  // Cobertura
   const covColor = coverage >= 25 ? '#16a34a' : coverage >= 12 ? '#d97706' : '#e63946';
-  $('covVal').textContent     = coverage.toFixed(0) + '%';
-  $('covVal').style.color     = covColor;
-  $('covBar').style.width     = Math.min(100, coverage) + '%';
+  $('covVal').textContent      = coverage.toFixed(0) + '%';
+  $('covVal').style.color      = covColor;
+  $('covBar').style.width      = Math.min(100, coverage) + '%';
   $('covBar').style.background = covColor;
   $('covWarning').style.display = coverage < 12 ? 'block' : 'none';
 
-  // Timestamp
-  $('resultTime').textContent = new Date().toLocaleString('es-ES', {
-    day:'2-digit', month:'2-digit', year:'numeric',
-    hour:'2-digit', minute:'2-digit'
-  });
+  // Metadatos del resultado
+  const d = new Date(timestamp);
+  const fechaStr = d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'});
+  const horaStr  = d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
+  $('metaOperario').textContent = operario  || '—';
+  $('metaFecha').textContent    = `${fechaStr} · ${horaStr}`;
+  $('metaPosicion').textContent = posicion  ? `Pos. ${posicion}` : '—';
+  $('metaLado').textContent     = lado      || '—';
 
-  // Scroll suave a resultados
   setTimeout(() => $('resultsCard').scrollIntoView({ behavior:'smooth', block:'start' }), 120);
 }
 
-/* ══════════════════════════════════════════
-   HISTORY
-══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   HISTORY — guardar
+═══════════════════════════════════════════ */
 function saveHistory(result, dataUrl) {
-  const hist  = loadHistoryData();
-  const thumb = makeThumb(dataUrl, 80);
+  const hist = loadHistoryData();
   hist.unshift({
-    ts:          new Date().toISOString(),
-    pctPechuga:  result.pctPechuga,
-    pctGrasa:    result.pctGrasa,
-    coverage:    result.coverage,
-    thumb
+    ts:         result.timestamp,
+    operario:   result.operario  || '',
+    posicion:   result.posicion  || '',
+    lado:       result.lado      || '',
+    pctPechuga: result.pctPechuga,
+    pctGrasa:   result.pctGrasa,
+    coverage:   result.coverage,
+    thumb:      makeThumb(dataUrl, 80)
   });
   if (hist.length > MAX_HISTORY) hist.splice(MAX_HISTORY);
-  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); } catch (e) {}
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); } catch(e) {}
   renderHistory();
 }
 
 function makeThumb(dataUrl, size) {
   try {
-    const c   = document.createElement('canvas');
-    c.width   = size;
-    c.height  = size;
-    const ctx = c.getContext('2d');
-    const img = new Image();
-    img.src   = dataUrl;
-    ctx.drawImage(img, 0, 0, size, size);
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const img = new Image(); img.src = dataUrl;
+    c.getContext('2d').drawImage(img, 0, 0, size, size);
     return c.toDataURL('image/jpeg', 0.5);
   } catch { return null; }
 }
@@ -672,6 +642,9 @@ function loadHistoryData() {
   catch { return []; }
 }
 
+/* ═══════════════════════════════════════════
+   HISTORY — renderizar
+═══════════════════════════════════════════ */
 function renderHistory() {
   const hist = loadHistoryData();
   const container = $('histItems');
@@ -683,26 +656,33 @@ function renderHistory() {
   }
 
   hist.forEach(item => {
-    const d = new Date(item.ts);
-    const dateStr = d.toLocaleDateString('es-ES', {
-      day:'2-digit', month:'2-digit', year:'2-digit',
-      hour:'2-digit', minute:'2-digit'
-    });
-    const pct   = item.pctPechuga;
-    const color = pct > 35 ? '#e63946' : pct > 20 ? '#d97706' : '#16a34a';
+    const d       = new Date(item.ts);
+    const fecha   = d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'2-digit'});
+    const hora    = d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
+    const pct     = item.pctPechuga;
+    const color   = pct > 35 ? '#e63946' : pct > 20 ? '#d97706' : '#16a34a';
+    const metaStr = [
+      item.posicion ? `Pos. ${item.posicion}` : null,
+      item.lado     || null
+    ].filter(Boolean).join(' · ') || '—';
 
-    const div  = document.createElement('div');
+    const div = document.createElement('div');
     div.className = 'hist-item';
     div.innerHTML = `
       ${item.thumb
-        ? `<img src="${item.thumb}" class="hist-thumb" alt="muestra">`
+        ? `<img src="${item.thumb}" class="hist-thumb" alt="">`
         : `<div class="hist-thumb-ph">📦</div>`}
       <div class="hist-info">
-        <span class="hist-pct" style="color:${color}">${pct.toFixed(1)}% pechuga</span>
-        <span class="hist-date">${dateStr}</span>
+        <div class="hist-operario">${escHtml(item.operario) || '<span style="color:#9ca3af;font-weight:400">Sin operario</span>'}</div>
+        <div class="hist-meta">${escHtml(metaStr)}</div>
+        <div class="hist-date">${fecha} · ${hora}</div>
       </div>
-      <div class="hist-grasa">${item.pctGrasa.toFixed(1)}%<span>grasa</span></div>
-    `;
+      <div class="hist-right">
+        <div class="hist-pct-lbl">pechuga</div>
+        <div class="hist-pct-pechuga" style="color:${color}">${pct.toFixed(1)}%</div>
+        <div class="hist-pct-lbl" style="margin-top:3px">grasa</div>
+        <div class="hist-pct-grasa">${item.pctGrasa.toFixed(1)}%</div>
+      </div>`;
     container.appendChild(div);
   });
 
@@ -710,7 +690,7 @@ function renderHistory() {
   btn.className = 'btn-ghost';
   btn.textContent = '🗑 Borrar historial';
   btn.onclick = () => {
-    if (confirm('¿Borrar todo el historial?')) {
+    if (confirm('¿Borrar todo el historial? Esta acción no se puede deshacer.')) {
       localStorage.removeItem(HISTORY_KEY);
       renderHistory();
     }
@@ -719,11 +699,136 @@ function renderHistory() {
 }
 
 function toggleHistory() {
-  const list = $('histItems');
-  const ico  = $('histToggle');
   historyOpen = !historyOpen;
-  list.style.display = historyOpen ? '' : 'none';
-  ico.textContent    = historyOpen ? '▼' : '▶';
+  $('histItems').style.display  = historyOpen ? '' : 'none';
+  $('histToggle').textContent   = historyOpen ? '▼' : '▶';
+}
+
+function escHtml(str) {
+  return String(str || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ═══════════════════════════════════════════
+   EXPORTAR A EXCEL (.xlsx)
+   Usa SheetJS — se carga bajo demanda
+═══════════════════════════════════════════ */
+let xlsxLoaded = false;
+
+function loadXLSX() {
+  return new Promise((resolve, reject) => {
+    if (xlsxLoaded || typeof XLSX !== 'undefined') { xlsxLoaded = true; resolve(); return; }
+    const s    = document.createElement('script');
+    s.src      = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    s.onload   = () => { xlsxLoaded = true; resolve(); };
+    s.onerror  = () => reject(new Error('No se pudo cargar SheetJS'));
+    document.head.appendChild(s);
+  });
+}
+
+async function exportToExcel() {
+  const hist = loadHistoryData();
+  if (hist.length === 0) {
+    alert('No hay registros para exportar.');
+    return;
+  }
+
+  $('loadingTxt').textContent = 'Generando Excel…';
+  $('loadingOverlay').classList.add('active');
+
+  try {
+    await loadXLSX();
+
+    /* ── Construir datos ── */
+    const headers = [
+      'Fecha', 'Hora', 'Nombre Operario',
+      'Posición en Línea', 'Lado Línea',
+      '% Pechuga', '% Grasa', 'Cobertura (%)'
+    ];
+
+    const rows = hist.map(item => {
+      const d = new Date(item.ts);
+      return [
+        d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'}),
+        d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'}),
+        item.operario  || '',
+        item.posicion  || '',
+        item.lado      || '',
+        parseFloat(item.pctPechuga.toFixed(1)),
+        parseFloat(item.pctGrasa.toFixed(1)),
+        parseFloat(item.coverage.toFixed(0))
+      ];
+    });
+
+    /* ── Crear workbook ── */
+    const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+
+    // Anchura de columnas
+    ws['!cols'] = [
+      {wch:12},{wch:8},{wch:22},{wch:17},{wch:12},
+      {wch:12},{wch:10},{wch:15}
+    ];
+
+    // Estilo de cabeceras (fondo azul oscuro, texto blanco) — solo en xlsx
+    const range = XLSX.utils.decode_range(ws['!ref']);
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const cell = XLSX.utils.encode_cell({r:0, c:C});
+      if (ws[cell]) {
+        ws[cell].s = {
+          font: { bold: true, color: { rgb: 'FFFFFF' } },
+          fill: { fgColor: { rgb: '111827' } },
+          alignment: { horizontal: 'center' }
+        };
+      }
+    }
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Mermas Pechuga');
+
+    // Hoja de resumen
+    const resumen = buildResumenSheet(hist);
+    XLSX.utils.book_append_sheet(wb, resumen, 'Resumen');
+
+    const fecha = new Date().toISOString().split('T')[0];
+    XLSX.writeFile(wb, `mermas_pechuga_${fecha}.xlsx`);
+
+  } catch(err) {
+    console.error(err);
+    alert('Error al generar el Excel. Verifica tu conexión a internet (necesaria la primera vez).');
+  }
+
+  $('loadingTxt').textContent = 'Analizando imagen…';
+  $('loadingOverlay').classList.remove('active');
+}
+
+function buildResumenSheet(hist) {
+  // Agrupar por operario
+  const byOp = {};
+  hist.forEach(item => {
+    const key = item.operario || '(sin nombre)';
+    if (!byOp[key]) byOp[key] = [];
+    byOp[key].push(item.pctPechuga);
+  });
+
+  const rows = [
+    ['RESUMEN POR OPERARIO', '', '', ''],
+    ['', '', '', ''],
+    ['Nombre Operario', 'Nº Análisis', '% Pechuga Medio', '% Pechuga Máx.']
+  ];
+
+  Object.entries(byOp).forEach(([op, vals]) => {
+    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+    const max = Math.max(...vals);
+    rows.push([op, vals.length, parseFloat(avg.toFixed(1)), parseFloat(max.toFixed(1))]);
+  });
+
+  rows.push(['', '', '', '']);
+  rows.push(['TOTAL REGISTROS', hist.length, '', '']);
+
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:24},{wch:14},{wch:20},{wch:16}];
+  return ws;
 }
 </script>
 </body>

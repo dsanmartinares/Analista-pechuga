@@ -1,5 +1,5 @@
-/* ─── Analista Pechuga — Service Worker ─── */
-const CACHE  = 'analista-pechuga-v1.0';
+/* ─── Analista Pechuga — Service Worker v2.0 ─── */
+const CACHE  = 'analista-pechuga-v2.0';
 const ASSETS = [
   './',
   './index.html',
@@ -24,15 +24,12 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // Solo cachear GET de mismo origen
   if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith(self.location.origin)) return;
-
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(response => {
-        // Cachear respuestas válidas
         if (response.status === 200) {
           const clone = response.clone();
           caches.open(CACHE).then(c => c.put(e.request, clone));
