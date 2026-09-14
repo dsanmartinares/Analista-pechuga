@@ -244,11 +244,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   <div class="pos-backdrop" onclick="closePosModal()"></div>
   <div class="pos-sheet">
     <div class="pos-sheet-header">
-      <span class="pos-sheet-title">Seleccionar posición</span>
+      <span class="pos-sheet-title">Seleccionar operario</span>
       <button class="pos-sheet-close" onclick="closePosModal()">✕</button>
     </div>
     <div class="pos-legend">
-      <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#16a34a"></div>Ya analizada hoy</div>
+      <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#16a34a"></div>Ya analizado hoy</div>
       <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#e63946"></div>Pendiente</div>
       <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#e5e7eb"></div>Ausente</div>
     </div>
@@ -284,7 +284,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 
   <!-- ═══ CARD: AUSENCIAS ═══ -->
   <div class="card">
-    <div class="card-label">🚫 Ausencias del turno</div>
+    <div class="card-label">🚫 Operarios ausentes</div>
     <div class="absence-list" id="absenceRows"></div>
     <div class="absence-summary" id="absenceSummary" style="display:none"></div>
   </div>
@@ -304,7 +304,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
       </div>
     </div>
 
-    <!-- Selector de posición -->
+    <!-- Selector de operario -->
     <div class="pos-trigger" id="posTrigger" onclick="openPosModal()">
       <div class="pos-trigger-left">
         <div class="pos-badge empty" id="posBadge">—</div>
@@ -339,7 +339,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
     <div class="result-meta" id="resultMeta">
       <div class="result-pos-badge" id="resultPosBadge">—</div>
       <div class="result-meta-info">
-        <div class="result-meta-label">Posición analizada</div>
+        <div class="result-meta-label">Operario analizado</div>
         <div class="result-meta-val" id="resultPosNum">—</div>
       </div>
       <div>
@@ -549,7 +549,7 @@ function buildAbsenceSelect(currentVal, existingAbs) {
     if (existingAbs.includes(i) && i !== currentVal) continue;
     const opt = document.createElement('option');
     opt.value = i;
-    opt.textContent = `Posición ${i}`;
+    opt.textContent = `Operario ${i}`;
     if (i === currentVal) opt.selected = true;
     sel.appendChild(opt);
   }
@@ -626,7 +626,7 @@ function updatePosTrigger() {
   if (!selectedPos) {
     badge.className = 'pos-badge empty';
     badge.textContent = '—';
-    num.textContent = 'Seleccionar posición';
+    num.textContent = 'Seleccionar operario';
     status.textContent = 'Toca para elegir del 1 al 40';
     trigger.classList.remove('has-value');
     return;
@@ -635,8 +635,8 @@ function updatePosTrigger() {
   const s = getPosStatus(selectedPos);
   badge.className = `pos-badge ${s}`;
   badge.textContent = selectedPos;
-  num.textContent = `Posición ${selectedPos}`;
-  status.textContent = s === 'done' ? '✓ Ya analizada hoy' : 'Pendiente de análisis';
+  num.textContent = `Operario ${selectedPos}`;
+  status.textContent = s === 'done' ? '✓ Ya analizado hoy' : 'Pendiente de análisis';
   trigger.classList.add('has-value');
 }
 
@@ -849,7 +849,7 @@ function displayResults(result, pos, ts) {
   $('covWarning').style.display=coverage<12?'block':'none';
 
   // Meta posición
-  const posLabel = pos ? `Posición ${pos}` : 'Sin posición';
+  const posLabel = pos ? `Operario ${pos}` : 'Sin operario';
   $('resultPosBadge').textContent = pos || '—';
   $('resultPosBadge').style.background = color;
   $('resultPosNum').textContent = posLabel;
@@ -919,7 +919,7 @@ function renderHistory() {
       <div class="hist-pos-badge" style="background:${color}">${item.posicion||'?'}</div>
       <div class="hist-info">
         <div class="hist-date">${fecha} · ${hora}</div>
-        <div class="hist-time">Posición ${item.posicion||'—'}</div>
+        <div class="hist-time">Operario ${item.posicion||'—'}</div>
       </div>
       <div class="hist-right">
         <div class="hist-lbl">pechuga</div>
@@ -974,7 +974,7 @@ async function exportToExcel(){
   try {
     await loadXLSX();
 
-    const headers=['Fecha','Hora','Posición (1-40)','% Pechuga','% Grasa','Cobertura (%)'];
+    const headers=['Fecha','Hora','Operario (1-40)','% Pechuga','% Grasa','Cobertura (%)'];
     const rows=hist.map(item=>{
       const d=new Date(item.ts);
       return [
@@ -990,14 +990,14 @@ async function exportToExcel(){
     const ws=XLSX.utils.aoa_to_sheet([headers,...rows]);
     ws['!cols']=[{wch:12},{wch:8},{wch:16},{wch:14},{wch:10},{wch:14}];
 
-    // Hoja de resumen por posición
+    // Hoja de resumen por operario
     const byPos={};
     hist.forEach(item=>{
-      const k=item.posicion||'Sin pos';
+      const k=item.posicion||'Sin op';
       if(!byPos[k]) byPos[k]=[];
       byPos[k].push(item.pctPechuga);
     });
-    const resHeaders=['Posición','Nº Análisis','% Pechuga Medio','% Pechuga Máx.'];
+    const resHeaders=['Operario','Nº Análisis','% Pechuga Medio','% Pechuga Máx.'];
     const resRows=Object.entries(byPos).map(([pos,vals])=>{
       const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
       return [pos,vals.length,parseFloat(avg.toFixed(1)),parseFloat(Math.max(...vals).toFixed(1))];
@@ -1006,10 +1006,19 @@ async function exportToExcel(){
     ws2['!cols']=[{wch:12},{wch:14},{wch:20},{wch:16}];
 
     const wb=XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,'Mermas Pechuga',ws);
-    XLSX.utils.book_append_sheet(wb,'Resumen por Posición',ws2);
+    XLSX.utils.book_append_sheet(wb, ws,  'Mermas Pechuga');  // orden: wb, hoja, nombre
+    XLSX.utils.book_append_sheet(wb, ws2, 'Resumen');
 
-    XLSX.writeFile(wb,`mermas_pechuga_${todayStr()}.xlsx`);
+    // Blob download — más fiable en móvil que XLSX.writeFile
+    const wbout = XLSX.write(wb, { bookType:'xlsx', type:'array' });
+    const blob  = new Blob([wbout], { type:'application/octet-stream' });
+    const url   = URL.createObjectURL(blob);
+    const a     = document.createElement('a');
+    a.href      = url;
+    a.download  = `mermas_pechuga_${todayStr()}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
   } catch(err){
     console.error(err);
     alert('Error al generar el Excel. Verifica tu conexión a internet (necesaria la primera vez).');
