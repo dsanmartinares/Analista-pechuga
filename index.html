@@ -20,73 +20,141 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto}
 
-/* HEADER */
-.header{background:var(--primary);color:#fff;padding:14px 18px;
+/* ─── HEADER ─── */
+.header{background:var(--primary);color:#fff;padding:13px 16px;
   display:flex;align-items:center;justify-content:space-between;
   position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.35)}
-.hdr-left{display:flex;align-items:center;gap:10px}
-.hdr-icon{font-size:26px;line-height:1}
-.hdr-title{font-size:17px;font-weight:700;letter-spacing:.3px}
-.hdr-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px}
-.ver-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
-  padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;
-  letter-spacing:.5px;font-family:monospace}
+.hdr-left{display:flex;align-items:center;gap:9px}
+.hdr-icon{font-size:24px}
+.hdr-title{font-size:16px;font-weight:700}
+.hdr-sub{font-size:10px;color:rgba(255,255,255,.5);margin-top:1px}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.progress-chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  padding:5px 10px;border-radius:20px;font-size:12px;font-weight:700;
+  display:flex;align-items:center;gap:5px;white-space:nowrap}
+.progress-chip .done-count{color:#4ade80}
+.progress-chip .sep{opacity:.4}
+.ver-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  padding:4px 8px;border-radius:20px;font-size:11px;font-weight:700;
+  font-family:monospace;color:rgba(255,255,255,.7)}
 
-.install-tip{background:var(--primary-mid);color:rgba(255,255,255,.65);
-  font-size:11px;text-align:center;padding:7px 16px;letter-spacing:.2px}
-.install-tip span{opacity:.45;margin:0 4px}
+.install-tip{background:var(--primary-mid);color:rgba(255,255,255,.6);
+  font-size:11px;text-align:center;padding:6px 16px}
 
-/* MAIN */
-.main{padding:14px 14px 40px;display:flex;flex-direction:column;gap:14px}
+/* ─── MAIN ─── */
+.main{padding:12px 12px 40px;display:flex;flex-direction:column;gap:12px}
 
-/* CARDS */
-.card{background:var(--card);border-radius:var(--radius);padding:18px;
-  box-shadow:0 1px 4px rgba(0,0,0,.08),0 2px 12px rgba(0,0,0,.05)}
-.card-label{font-size:11px;font-weight:700;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+/* ─── CARDS ─── */
+.card{background:var(--card);border-radius:var(--radius);padding:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08),0 2px 10px rgba(0,0,0,.04)}
+.card-label{font-size:11px;font-weight:700;letter-spacing:1.1px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 
-/* CAPTURE */
+/* ─── AUSENCIAS ─── */
+.absence-list{display:flex;flex-direction:column;gap:8px}
+.absence-row{display:flex;align-items:center;gap:8px}
+.absence-select{flex:1;padding:11px 12px;border:1.5px solid var(--border);
+  border-radius:9px;font-size:14px;color:var(--text);background:#fff;
+  appearance:none;-webkit-appearance:none;font-family:inherit;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.absence-select:focus{outline:none;border-color:#6b7280}
+.absence-remove-btn{width:38px;height:38px;border:none;border-radius:9px;
+  background:#fee2e2;color:#e63946;font-size:16px;font-weight:700;
+  cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:background .15s}
+.absence-remove-btn:active{background:#fecaca}
+.absence-empty-row .absence-select{color:var(--muted);border-style:dashed}
+.absence-summary{margin-top:10px;font-size:12px;color:var(--muted);
+  display:flex;gap:6px;flex-wrap:wrap}
+.abs-tag{background:#f1f5f9;border:1px solid var(--border);
+  border-radius:20px;padding:3px 10px;font-weight:600;
+  display:flex;align-items:center;gap:5px}
+.abs-tag-x{cursor:pointer;color:var(--red);font-size:11px;font-weight:800}
+
+/* ─── POSICIÓN ─── */
+.prog-section{margin-bottom:14px}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.prog-label{font-size:13px;font-weight:700;color:var(--text)}
+.prog-counts{font-size:12px;color:var(--muted)}
+.prog-track{width:100%;height:7px;background:#e5e7eb;border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:var(--green);border-radius:4px;transition:width .5s ease}
+
+.pos-trigger{width:100%;padding:14px 16px;border:2px solid var(--border);
+  border-radius:11px;background:#fff;display:flex;align-items:center;
+  justify-content:space-between;cursor:pointer;margin-bottom:14px;
+  transition:border-color .15s;gap:12px}
+.pos-trigger:active{background:#f8fafc}
+.pos-trigger.has-value{border-color:#374151}
+.pos-trigger-left{display:flex;align-items:center;gap:10px}
+.pos-badge{width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;color:#fff;flex-shrink:0}
+.pos-badge.done{background:var(--green)}
+.pos-badge.pending{background:var(--red)}
+.pos-badge.empty{background:#e5e7eb;color:#9ca3af}
+.pos-trigger-text{display:flex;flex-direction:column;gap:2px}
+.pos-trigger-num{font-size:15px;font-weight:700;color:var(--text)}
+.pos-trigger-status{font-size:11px;color:var(--muted)}
+.pos-trigger-arrow{color:var(--muted);font-size:18px;flex-shrink:0}
+
+/* ─── POSITION MODAL ─── */
+.pos-modal{display:none;position:fixed;inset:0;z-index:300;flex-direction:column;justify-content:flex-end}
+.pos-modal.open{display:flex}
+.pos-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.pos-sheet{position:relative;background:#fff;border-radius:20px 20px 0 0;
+  padding:20px 16px 32px;max-height:80vh;overflow-y:auto}
+.pos-sheet-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.pos-sheet-title{font-size:16px;font-weight:700}
+.pos-sheet-close{background:none;border:none;font-size:22px;color:var(--muted);
+  cursor:pointer;padding:2px 6px;line-height:1}
+.pos-legend{display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.pos-leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.pos-leg-dot{width:10px;height:10px;border-radius:3px}
+.pos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pos-btn{aspect-ratio:1;border:none;border-radius:10px;font-size:16px;font-weight:800;
+  cursor:pointer;color:#fff;transition:transform .1s,opacity .1s;
+  display:flex;align-items:center;justify-content:center;position:relative}
+.pos-btn:active:not(.absent){transform:scale(.88)}
+.pos-btn.done{background:var(--green)}
+.pos-btn.pending{background:var(--red)}
+.pos-btn.absent{background:#e5e7eb;color:#9ca3af;cursor:default}
+.pos-btn.current-sel{box-shadow:0 0 0 3px #111827,0 0 0 5px #fff}
+.pos-btn .pos-check{position:absolute;bottom:3px;right:4px;
+  font-size:9px;opacity:.85}
+
+/* ─── CAPTURE ─── */
 .capture-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .btn-cap{background:var(--primary);color:#fff;border:none;border-radius:10px;
-  padding:16px 8px;font-size:14px;font-weight:600;cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .15s}
+  padding:15px 8px;font-size:14px;font-weight:600;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:7px;transition:opacity .15s}
 .btn-cap:active{opacity:.75}
-.btn-cap .ico{font-size:30px}
-
-/* PREVIEW */
-.preview-wrap{width:100%;min-height:180px;border-radius:10px;
+.btn-cap .ico{font-size:28px}
+.preview-wrap{width:100%;min-height:170px;border-radius:10px;
   background:#f8fafc;border:2px dashed var(--border);
   display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview-wrap img{width:100%;display:block}
-.preview-ph{text-align:center;padding:36px 20px;color:var(--muted)}
-.preview-ph .ico{font-size:44px;display:block;margin-bottom:8px}
+.preview-ph{text-align:center;padding:32px 20px;color:var(--muted)}
+.preview-ph .ico{font-size:40px;display:block;margin-bottom:8px}
 .preview-ph p{font-size:13px;line-height:1.5}
-
-/* FORM SECTION */
-.form-section{display:none;margin-top:14px;display:flex;flex-direction:column;gap:10px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-field{display:flex;flex-direction:column;gap:5px}
-.form-field label{font-size:11px;font-weight:700;letter-spacing:.8px;
-  text-transform:uppercase;color:var(--muted)}
-.form-field input,.form-field select{
-  width:100%;padding:11px 12px;border:1.5px solid var(--border);
-  border-radius:9px;font-size:15px;color:var(--text);
-  background:#fff;appearance:none;-webkit-appearance:none;
-  outline:none;transition:border-color .15s;font-family:inherit}
-.form-field input:focus,.form-field select:focus{border-color:#6b7280}
-.form-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-
-/* ANALYZE BTN */
-.btn-analyze{width:100%;margin-top:14px;background:var(--red);color:#fff;
-  border:none;border-radius:10px;padding:17px;font-size:16px;font-weight:700;
-  cursor:pointer;letter-spacing:.4px;transition:opacity .15s,transform .1s;display:none}
+.btn-analyze{width:100%;margin-top:13px;background:var(--red);color:#fff;
+  border:none;border-radius:10px;padding:16px;font-size:16px;font-weight:700;
+  cursor:pointer;letter-spacing:.3px;transition:opacity .15s,transform .1s;display:none}
 .btn-analyze:active{opacity:.85;transform:scale(.98)}
 .btn-analyze:disabled{background:#9ca3af;cursor:not-allowed}
 
-/* RESULTS */
+/* ─── RESULTS ─── */
 #resultsCard{display:none}
-.gauge-row{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+.result-meta{background:#f8fafc;border-radius:10px;padding:10px 14px;
+  margin-bottom:14px;display:flex;gap:20px;align-items:center}
+.result-pos-badge{width:52px;height:52px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:#fff}
+.result-meta-info{flex:1}
+.result-meta-label{font-size:10px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.result-meta-val{font-size:14px;font-weight:700;color:var(--text)}
+.gauge-row{display:flex;align-items:center;gap:16px;margin-bottom:14px}
 .gauge{position:relative;width:110px;height:110px;flex-shrink:0}
 .gauge svg{transform:rotate(-90deg)}
 .gauge-bg{fill:none;stroke:#e5e7eb;stroke-width:10}
@@ -97,86 +165,98 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 .gauge-pct{font-size:22px;font-weight:800;line-height:1}
 .gauge-lbl{font-size:10px;color:var(--muted);font-weight:600;
   text-transform:uppercase;letter-spacing:.5px}
-.stats-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.stats-col{flex:1;display:flex;flex-direction:column;gap:11px}
 .stat-row{display:flex;align-items:center;gap:8px}
 .stat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .stat-name{font-size:11px;font-weight:600;color:var(--muted);
   text-transform:uppercase;letter-spacing:.6px}
 .stat-val{font-size:24px;font-weight:800;line-height:1.1;margin-top:1px}
-.cov-lbl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.cov-label{font-size:11px;color:var(--muted);font-weight:600}
+.cov-lbl-row{display:flex;justify-content:space-between;margin-bottom:4px}
+.cov-lbl{font-size:11px;color:var(--muted);font-weight:600}
 .cov-val{font-size:12px;font-weight:700}
-.progress-track{width:100%;height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;border-radius:3px;transition:width .6s ease,background .3s}
+.cov-track{width:100%;height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.cov-fill{height:100%;border-radius:3px;transition:width .6s ease,background .3s}
 .cov-warning{display:none;margin-top:8px;padding:8px 10px;border-radius:8px;
   background:#fef9c3;border:1px solid #fde047;font-size:12px;color:#713f12;line-height:1.4}
-.result-meta{background:#f8fafc;border-radius:10px;padding:10px 12px;
-  margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.meta-item{display:flex;flex-direction:column;gap:2px}
-.meta-lbl{font-size:10px;font-weight:700;letter-spacing:.8px;
-  text-transform:uppercase;color:var(--muted)}
-.meta-val{font-size:13px;font-weight:600;color:var(--text)}
 .divider{height:1px;background:var(--border);margin:14px 0}
-.seg-label{font-size:11px;font-weight:700;letter-spacing:1.2px;
+.seg-label{font-size:11px;font-weight:700;letter-spacing:1.1px;
   text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 #segCanvas{width:100%;border-radius:10px;display:block}
-.legend{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+.legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
 .leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
 .leg-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.result-time{font-size:11px;color:var(--muted);margin-top:10px;text-align:right}
 
-/* HISTORY */
+/* ─── HISTORY ─── */
 .hist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
 .hist-top .card-label{margin-bottom:0}
 .hist-actions{display:flex;align-items:center;gap:8px}
-.btn-excel{background:#16a34a;color:#fff;border:none;border-radius:8px;
+.btn-excel{background:var(--green);color:#fff;border:none;border-radius:8px;
   padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;gap:5px;letter-spacing:.3px;transition:opacity .15s}
+  display:flex;align-items:center;gap:5px;transition:opacity .15s}
 .btn-excel:active{opacity:.8}
-.btn-excel .ico{font-size:14px}
 .hist-toggle-btn{background:none;border:none;color:var(--muted);
   font-size:16px;cursor:pointer;padding:4px}
 #histItems{margin-top:14px}
 .hist-empty{font-size:13px;color:var(--muted);text-align:center;padding:16px 0}
-.hist-item{display:flex;align-items:center;gap:12px;
-  padding:11px 0;border-bottom:1px solid var(--border)}
+.hist-item{display:flex;align-items:center;gap:11px;
+  padding:10px 0;border-bottom:1px solid var(--border)}
 .hist-item:last-of-type{border-bottom:none}
-.hist-thumb{width:50px;height:50px;border-radius:8px;object-fit:cover;flex-shrink:0}
-.hist-thumb-ph{width:50px;height:50px;border-radius:8px;background:#f1f5f9;
-  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.hist-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.hist-thumb-ph{width:48px;height:48px;border-radius:8px;background:#f1f5f9;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.hist-pos-badge{width:38px;height:38px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;color:#fff}
 .hist-info{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
-.hist-operario{font-size:14px;font-weight:700;color:var(--text);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hist-meta{font-size:11px;color:var(--muted)}
-.hist-date{font-size:11px;color:var(--muted)}
+.hist-date{font-size:12px;font-weight:600;color:var(--text)}
+.hist-time{font-size:11px;color:var(--muted)}
 .hist-right{text-align:right;flex-shrink:0}
-.hist-pct-pechuga{font-size:18px;font-weight:800}
-.hist-pct-grasa{font-size:12px;font-weight:600;color:var(--blue)}
-.hist-pct-lbl{font-size:10px;color:var(--muted);font-weight:600;
+.hist-pechuga{font-size:18px;font-weight:800}
+.hist-grasa{font-size:12px;color:var(--blue);font-weight:600}
+.hist-lbl{font-size:10px;color:var(--muted);font-weight:600;
   text-transform:uppercase;letter-spacing:.4px}
 .btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);
   border-radius:8px;padding:7px 14px;font-size:12px;cursor:pointer;
   width:100%;margin-top:10px;transition:background .15s}
 .btn-ghost:active{background:#f1f5f9}
 
-/* LOADING */
+/* ─── LOADING ─── */
 .loading-overlay{display:none;position:fixed;inset:0;
   background:rgba(0,0,0,.65);z-index:500;
   align-items:center;justify-content:center;flex-direction:column;gap:14px}
 .loading-overlay.active{display:flex}
 .spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,.2);
   border-top-color:#fff;border-radius:50%;animation:spin .75s linear infinite}
-.loading-txt{color:#fff;font-size:15px;font-weight:600;letter-spacing:.3px}
+.loading-txt{color:#fff;font-size:15px;font-weight:600}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
+<!-- ═══ LOADING ═══ -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
   <div class="loading-txt" id="loadingTxt">Analizando imagen…</div>
 </div>
 
+<!-- ═══ POSITION MODAL ═══ -->
+<div class="pos-modal" id="posModal">
+  <div class="pos-backdrop" onclick="closePosModal()"></div>
+  <div class="pos-sheet">
+    <div class="pos-sheet-header">
+      <span class="pos-sheet-title">Seleccionar posición</span>
+      <button class="pos-sheet-close" onclick="closePosModal()">✕</button>
+    </div>
+    <div class="pos-legend">
+      <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#16a34a"></div>Ya analizada hoy</div>
+      <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#e63946"></div>Pendiente</div>
+      <div class="pos-leg-item"><div class="pos-leg-dot" style="background:#e5e7eb"></div>Ausente</div>
+    </div>
+    <div class="pos-grid" id="posGrid"></div>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
 <div class="header">
   <div class="hdr-left">
     <div class="hdr-icon">🍗</div>
@@ -185,25 +265,61 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
       <div class="hdr-sub">Control de mermas · DOLZ</div>
     </div>
   </div>
-  <div class="ver-badge" id="verBadge">v2.0</div>
+  <div class="hdr-right">
+    <div class="progress-chip" id="progressChip">
+      <span class="done-count" id="chipDone">0</span>
+      <span class="sep">/</span>
+      <span id="chipTotal">40</span>
+      <span>✓</span>
+    </div>
+    <div class="ver-badge">v3.0</div>
+  </div>
 </div>
 
 <div class="install-tip">
-  iOS: Compartir<span>›</span>Añadir a inicio &nbsp;|&nbsp; Android: instalar desde el banner
+  iOS: Compartir › Añadir a inicio &nbsp;|&nbsp; Android: instalar desde el banner
 </div>
 
 <div class="main">
 
-  <!-- CAPTURA -->
+  <!-- ═══ CARD: AUSENCIAS ═══ -->
+  <div class="card">
+    <div class="card-label">🚫 Ausencias del turno</div>
+    <div class="absence-list" id="absenceRows"></div>
+    <div class="absence-summary" id="absenceSummary" style="display:none"></div>
+  </div>
+
+  <!-- ═══ CARD: NUEVA MUESTRA ═══ -->
   <div class="card">
     <div class="card-label">📷 Nueva muestra</div>
+
+    <!-- Barra de progreso -->
+    <div class="prog-section">
+      <div class="prog-row">
+        <span class="prog-label" id="progLabel">0 de 40 completadas</span>
+        <span class="prog-counts" id="progAbs"></span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" id="progFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Selector de posición -->
+    <div class="pos-trigger" id="posTrigger" onclick="openPosModal()">
+      <div class="pos-trigger-left">
+        <div class="pos-badge empty" id="posBadge">—</div>
+        <div class="pos-trigger-text">
+          <div class="pos-trigger-num" id="posTriggerNum">Seleccionar posición</div>
+          <div class="pos-trigger-status" id="posTriggerStatus">Toca para elegir del 1 al 40</div>
+        </div>
+      </div>
+      <div class="pos-trigger-arrow">›</div>
+    </div>
+
+    <!-- Botones captura -->
     <div class="capture-row">
-      <button class="btn-cap" onclick="openCamera()">
-        <span class="ico">📷</span>Cámara
-      </button>
-      <button class="btn-cap" onclick="openGallery()">
-        <span class="ico">🖼️</span>Galería
-      </button>
+      <button class="btn-cap" onclick="openCamera()"><span class="ico">📷</span>Cámara</button>
+      <button class="btn-cap" onclick="openGallery()"><span class="ico">🖼️</span>Galería</button>
     </div>
 
     <div class="preview-wrap" id="preview">
@@ -213,49 +329,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
       </div>
     </div>
 
-    <!-- Formulario — visible solo tras cargar foto -->
-    <div class="form-section" id="formSection">
-      <div class="form-field">
-        <label>Nombre Operario</label>
-        <input type="text" id="inpOperario" placeholder="Ej: Juan García" autocomplete="off" autocorrect="off">
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Posición en Línea</label>
-          <select id="selPosicion">
-            <option value="">—</option>
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Lado Línea</label>
-          <select id="selLado">
-            <option value="">—</option>
-            <option>Izquierda</option>
-            <option>Derecha</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn-analyze" id="btnAnalyze" onclick="analyzeImage()">
-      Analizar →
-    </button>
+    <button class="btn-analyze" id="btnAnalyze" onclick="analyzeImage()">Analizar →</button>
   </div>
 
-  <!-- RESULTADOS -->
+  <!-- ═══ CARD: RESULTADOS ═══ -->
   <div class="card" id="resultsCard">
     <div class="card-label">📊 Resultado</div>
 
-    <!-- Metadatos del registro -->
     <div class="result-meta" id="resultMeta">
-      <div class="meta-item"><div class="meta-lbl">Operario</div><div class="meta-val" id="metaOperario">—</div></div>
-      <div class="meta-item"><div class="meta-lbl">Fecha / Hora</div><div class="meta-val" id="metaFecha">—</div></div>
-      <div class="meta-item"><div class="meta-lbl">Posición</div><div class="meta-val" id="metaPosicion">—</div></div>
-      <div class="meta-item"><div class="meta-lbl">Lado</div><div class="meta-val" id="metaLado">—</div></div>
+      <div class="result-pos-badge" id="resultPosBadge">—</div>
+      <div class="result-meta-info">
+        <div class="result-meta-label">Posición analizada</div>
+        <div class="result-meta-val" id="resultPosNum">—</div>
+      </div>
+      <div>
+        <div class="result-meta-label">Fecha / Hora</div>
+        <div class="result-meta-val" id="resultFecha">—</div>
+      </div>
     </div>
 
     <div class="gauge-row">
@@ -263,64 +353,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
         <svg width="110" height="110" viewBox="0 0 110 110">
           <circle class="gauge-bg" cx="55" cy="55" r="46"/>
           <circle class="gauge-fill" id="gaugeFill"
-            cx="55" cy="55" r="46"
-            stroke-dasharray="289" stroke-dashoffset="289"/>
+            cx="55" cy="55" r="46" stroke-dasharray="289" stroke-dashoffset="289"/>
         </svg>
         <div class="gauge-center">
           <div class="gauge-pct" id="gaugePct">--%</div>
           <div class="gauge-lbl">pechuga</div>
         </div>
       </div>
-
       <div class="stats-col">
         <div>
-          <div class="stat-row">
-            <div class="stat-dot" style="background:#e63946"></div>
-            <div class="stat-name">Pechuga</div>
-          </div>
+          <div class="stat-row"><div class="stat-dot" style="background:#e63946"></div>
+            <div class="stat-name">Pechuga</div></div>
           <div class="stat-val" id="valPechuga" style="color:#e63946">--%</div>
         </div>
         <div>
-          <div class="stat-row">
-            <div class="stat-dot" style="background:#2563eb"></div>
-            <div class="stat-name">Grasa / OK</div>
-          </div>
+          <div class="stat-row"><div class="stat-dot" style="background:#2563eb"></div>
+            <div class="stat-name">Grasa / OK</div></div>
           <div class="stat-val" id="valGrasa" style="color:#2563eb">--%</div>
         </div>
         <div>
           <div class="cov-lbl-row">
-            <span class="cov-label">Cobertura análisis</span>
+            <span class="cov-lbl">Cobertura</span>
             <span class="cov-val" id="covVal">--%</span>
           </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="covBar" style="width:0%"></div>
-          </div>
+          <div class="cov-track"><div class="cov-fill" id="covBar" style="width:0%"></div></div>
         </div>
       </div>
     </div>
 
     <div class="cov-warning" id="covWarning">
-      ⚠️ Poca superficie de merma visible. Para mejor precisión, fotografía la caja con más contenido o desde más cerca.
+      ⚠️ Poca superficie de merma visible. Fotografía la caja más llena o más cerca.
     </div>
 
     <div class="divider"></div>
     <div class="seg-label">🎨 Segmentación visual</div>
     <canvas id="segCanvas"></canvas>
     <div class="legend">
-      <div class="leg-item"><div class="leg-dot" style="background:#e63946"></div>Pechuga (merma)</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#2563eb"></div>Grasa / correcto</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#9ca3af"></div>Fondo (excluido)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#e63946"></div>Pechuga</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#2563eb"></div>Grasa / OK</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#9ca3af"></div>Fondo</div>
     </div>
   </div>
 
-  <!-- HISTORIAL -->
+  <!-- ═══ CARD: HISTORIAL ═══ -->
   <div class="card">
     <div class="hist-top">
       <div class="card-label" style="margin-bottom:0">📋 Historial</div>
       <div class="hist-actions">
-        <button class="btn-excel" onclick="exportToExcel()">
-          <span class="ico">📊</span>Exportar Excel
-        </button>
+        <button class="btn-excel" onclick="exportToExcel()">📊 Excel</button>
         <button class="hist-toggle-btn" id="histToggle" onclick="toggleHistory()">▼</button>
       </div>
     </div>
@@ -336,65 +416,263 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 <canvas id="procCanvas" style="display:none"></canvas>
 
 <script>
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    CONFIG
-═══════════════════════════════════════════ */
-const APP_VERSION  = 'v2.0';
-const HISTORY_KEY  = 'analista_pechuga_v1'; // misma clave → conserva historial v1
-const DEFAULTS_KEY = 'analista_form_defaults';
+═══════════════════════════════════════════════════ */
+const APP_VERSION  = 'v3.0';
+const HISTORY_KEY  = 'analista_pechuga_v1'; // mantiene historial de v2
+const SESSION_KEY  = 'analista_session_v3';
 const MAX_HISTORY  = 50;
 const MAX_PX       = 900;
+const TOTAL_POS    = 40;
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    STATE
-═══════════════════════════════════════════ */
-let pendingDataUrl = null;
+═══════════════════════════════════════════════════ */
+let selectedPos    = null;   // posición actualmente seleccionada (1-40)
+let pendingDataUrl = null;   // imagen pendiente de análisis
 let historyOpen    = true;
 
-/* ═══════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('verBadge').textContent = APP_VERSION;
-  loadFormDefaults();
-  renderHistory();
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
-  }
-});
-
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    HELPERS
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════ */
 const $    = id => document.getElementById(id);
 const show = id => $(id).style.display = '';
 const hide = id => $(id).style.display = 'none';
 
-/* ═══════════════════════════════════════════
-   FORM DEFAULTS — persiste entre sesiones
-═══════════════════════════════════════════ */
-function saveFormDefaults() {
+/* ═══════════════════════════════════════════════════
+   SESSION (ausencias — se reinicia cada día)
+═══════════════════════════════════════════════════ */
+function todayStr() { return new Date().toISOString().split('T')[0]; }
+
+function getSession() {
   try {
-    localStorage.setItem(DEFAULTS_KEY, JSON.stringify({
-      operario: $('inpOperario').value,
-      posicion: $('selPosicion').value,
-      lado:     $('selLado').value
-    }));
-  } catch(e) {}
+    const d = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
+    if (d.date !== todayStr()) return { date: todayStr(), absent: [] };
+    return d;
+  } catch { return { date: todayStr(), absent: [] }; }
 }
 
-function loadFormDefaults() {
-  try {
-    const d = JSON.parse(localStorage.getItem(DEFAULTS_KEY) || '{}');
-    if (d.operario) $('inpOperario').value = d.operario;
-    if (d.posicion) $('selPosicion').value = d.posicion;
-    if (d.lado)     $('selLado').value     = d.lado;
-  } catch(e) {}
+function saveSession(s) {
+  try { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch(e) {}
 }
 
-/* ═══════════════════════════════════════════
+function getAbsences() { return getSession().absent || []; }
+
+function setAbsences(arr) {
+  const s = getSession();
+  s.absent = [...new Set(arr)].filter(n => n >= 1 && n <= TOTAL_POS).sort((a,b) => a-b);
+  saveSession(s);
+}
+
+/* ═══════════════════════════════════════════════════
+   EVALUATED TODAY (desde historial)
+═══════════════════════════════════════════════════ */
+function getEvaluatedToday() {
+  return loadHistoryData()
+    .filter(h => h.ts && h.ts.startsWith(todayStr()) && h.posicion)
+    .map(h => parseInt(h.posicion))
+    .filter(n => !isNaN(n) && n >= 1 && n <= TOTAL_POS);
+}
+
+/* ═══════════════════════════════════════════════════
+   STATUS DE UNA POSICIÓN
+═══════════════════════════════════════════════════ */
+function getPosStatus(n) {
+  const abs  = getAbsences();
+  const done = getEvaluatedToday();
+  if (abs.includes(n))  return 'absent';
+  if (done.includes(n)) return 'done';
+  return 'pending';
+}
+
+/* ═══════════════════════════════════════════════════
+   AUSENCIAS — RENDER
+═══════════════════════════════════════════════════ */
+function renderAbsenceRows() {
+  const abs       = getAbsences();
+  const container = $('absenceRows');
+  container.innerHTML = '';
+
+  // Una fila por ausencia registrada
+  abs.forEach(num => {
+    const row = document.createElement('div');
+    row.className = 'absence-row';
+
+    const sel = buildAbsenceSelect(num, abs);
+    sel.onchange = () => {
+      const newVal = parseInt(sel.value);
+      if (!newVal) { removeAbsence(num); return; }
+      const updated = abs.map(a => a === num ? newVal : a);
+      setAbsences(updated);
+      refreshAll();
+    };
+
+    const btn = document.createElement('button');
+    btn.className = 'absence-remove-btn';
+    btn.innerHTML = '✕';
+    btn.onclick = () => removeAbsence(num);
+
+    row.appendChild(sel);
+    row.appendChild(btn);
+    container.appendChild(row);
+  });
+
+  // Fila vacía al final para añadir
+  const emptyRow = document.createElement('div');
+  emptyRow.className = 'absence-row absence-empty-row';
+  const emptySel = buildAbsenceSelect(null, abs);
+  emptySel.onchange = () => {
+    const val = parseInt(emptySel.value);
+    if (!val) return;
+    setAbsences([...abs, val]);
+    refreshAll();
+  };
+  emptyRow.appendChild(emptySel);
+  container.appendChild(emptyRow);
+
+  // Tags de resumen
+  renderAbsenceSummary(abs);
+}
+
+function buildAbsenceSelect(currentVal, existingAbs) {
+  const sel = document.createElement('select');
+  sel.className = 'absence-select';
+
+  const ph = document.createElement('option');
+  ph.value = '';
+  ph.textContent = currentVal ? '' : '— Añadir ausencia —';
+  sel.appendChild(ph);
+
+  for (let i = 1; i <= TOTAL_POS; i++) {
+    // Ocultar ya seleccionadas excepto la propia
+    if (existingAbs.includes(i) && i !== currentVal) continue;
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `Posición ${i}`;
+    if (i === currentVal) opt.selected = true;
+    sel.appendChild(opt);
+  }
+  return sel;
+}
+
+function renderAbsenceSummary(abs) {
+  const summary = $('absenceSummary');
+  if (abs.length === 0) { summary.style.display = 'none'; return; }
+  summary.style.display = 'flex';
+  summary.innerHTML = '<span style="font-size:11px;font-weight:700;color:var(--muted);align-self:center">Ausentes:</span>';
+  abs.forEach(num => {
+    const tag = document.createElement('div');
+    tag.className = 'abs-tag';
+    tag.innerHTML = `${num} <span class="abs-tag-x" onclick="removeAbsence(${num})">✕</span>`;
+    summary.appendChild(tag);
+  });
+}
+
+function removeAbsence(num) {
+  setAbsences(getAbsences().filter(a => a !== num));
+  if (selectedPos === num) selectedPos = null;
+  refreshAll();
+}
+
+/* ═══════════════════════════════════════════════════
+   POSICIÓN — SELECTOR
+═══════════════════════════════════════════════════ */
+function openPosModal() {
+  renderPosGrid();
+  $('posModal').classList.add('open');
+}
+
+function closePosModal() {
+  $('posModal').classList.remove('open');
+}
+
+function renderPosGrid() {
+  const grid = $('posGrid');
+  grid.innerHTML = '';
+  for (let i = 1; i <= TOTAL_POS; i++) {
+    const status = getPosStatus(i);
+    const btn = document.createElement('button');
+    btn.className = `pos-btn ${status}`;
+    if (i === selectedPos) btn.classList.add('current-sel');
+    btn.textContent = i;
+    if (status === 'done') {
+      const chk = document.createElement('span');
+      chk.className = 'pos-check';
+      chk.textContent = '✓';
+      btn.appendChild(chk);
+    }
+    if (status !== 'absent') {
+      btn.onclick = () => selectPos(i);
+    }
+    grid.appendChild(btn);
+  }
+}
+
+function selectPos(n) {
+  selectedPos = n;
+  closePosModal();
+  updatePosTrigger();
+  // Si ya hay imagen cargada, mostrar botón analizar
+  if (pendingDataUrl) $('btnAnalyze').style.display = 'block';
+}
+
+function updatePosTrigger() {
+  const trigger = $('posTrigger');
+  const badge   = $('posBadge');
+  const num     = $('posTriggerNum');
+  const status  = $('posTriggerStatus');
+
+  if (!selectedPos) {
+    badge.className = 'pos-badge empty';
+    badge.textContent = '—';
+    num.textContent = 'Seleccionar posición';
+    status.textContent = 'Toca para elegir del 1 al 40';
+    trigger.classList.remove('has-value');
+    return;
+  }
+
+  const s = getPosStatus(selectedPos);
+  badge.className = `pos-badge ${s}`;
+  badge.textContent = selectedPos;
+  num.textContent = `Posición ${selectedPos}`;
+  status.textContent = s === 'done' ? '✓ Ya analizada hoy' : 'Pendiente de análisis';
+  trigger.classList.add('has-value');
+}
+
+/* ═══════════════════════════════════════════════════
+   PROGRESO
+═══════════════════════════════════════════════════ */
+function updateProgress() {
+  const abs      = getAbsences();
+  const done     = getEvaluatedToday();
+  const active   = TOTAL_POS - abs.length;               // posiciones que hay que evaluar
+  const doneAct  = done.filter(n => !abs.includes(n));   // evaluadas de las activas
+  const pct      = active > 0 ? (doneAct.length / active) * 100 : 100;
+
+  // Header chip
+  $('chipDone').textContent  = doneAct.length;
+  $('chipTotal').textContent = active;
+
+  // Barra
+  $('progLabel').textContent = `${doneAct.length} de ${active} completadas`;
+  $('progAbs').textContent   = abs.length > 0 ? `${abs.length} ausente${abs.length > 1 ? 's' : ''}` : '';
+  $('progFill').style.width  = Math.min(100, pct) + '%';
+}
+
+/* ═══════════════════════════════════════════════════
+   REFRESH ALL (llama tras cualquier cambio de estado)
+═══════════════════════════════════════════════════ */
+function refreshAll() {
+  renderAbsenceRows();
+  updatePosTrigger();
+  updateProgress();
+  renderHistory();
+}
+
+/* ═══════════════════════════════════════════════════
    FILE / CAMERA
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════ */
 function openCamera()  { $('camInput').click(); }
 function openGallery() { $('galInput').click(); }
 
@@ -415,113 +693,94 @@ function loadPreview(dataUrl) {
   img.src = dataUrl;
   img.style.cssText = 'width:100%;border-radius:8px;display:block;';
   wrap.appendChild(img);
-  $('formSection').style.display = 'flex';
-  $('btnAnalyze').style.display  = 'block';
+  // Mostrar botón solo si hay posición seleccionada
+  $('btnAnalyze').style.display = selectedPos ? 'block' : 'none';
+  if (!selectedPos) {
+    $('btnAnalyze').style.display = 'block'; // permitir análisis aunque no haya posición
+  }
   hide('resultsCard');
 }
 
-/* ═══════════════════════════════════════════
-   COLOR CLASSIFICATION  (espacio HSL)
-   ─────────────────────────────────────────
-   Contexto: merma de pechuga DOLZ
-   · Fondo: caja amarilla DOLZ + bolsa rojo-naranja
-   · Grasa (correcto):  blanco/crema  → S baja, L alta
-   · Pechuga (merma):   rosa-salmón   → S moderada, L media
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   COLOR CLASSIFICATION  (HSL)
+   Contexto: merma de pechuga en caja DOLZ amarilla
+   con bolsa rojo-naranja
+═══════════════════════════════════════════════════ */
 function rgbToHsl(r, g, b) {
-  r /= 255; g /= 255; b /= 255;
-  const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+  r/=255; g/=255; b/=255;
+  const mx=Math.max(r,g,b), mn=Math.min(r,g,b);
   let h, s;
-  const l = (mx + mn) / 2;
-  if (mx === mn) { h = s = 0; }
+  const l=(mx+mn)/2;
+  if(mx===mn){ h=s=0; }
   else {
-    const d = mx - mn;
-    s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
-    switch (mx) {
-      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-      case g: h = ((b - r) / d + 2) / 6; break;
-      case b: h = ((r - g) / d + 4) / 6; break;
+    const d=mx-mn;
+    s = l>0.5 ? d/(2-mx-mn) : d/(mx+mn);
+    switch(mx){
+      case r: h=((g-b)/d+(g<b?6:0))/6; break;
+      case g: h=((b-r)/d+2)/6; break;
+      case b: h=((r-g)/d+4)/6; break;
     }
   }
-  return [h * 360, s * 100, l * 100];
+  return [h*360, s*100, l*100];
 }
 
 function classifyPixel(r, g, b) {
   const [h, s, l] = rgbToHsl(r, g, b);
-
-  /* ── Excluir fondo ── */
-  if (h >= 38 && h <= 68 && s > 38 && l > 33) return 'bg'; // caja amarilla DOLZ
-  if (s > 56 && (h <= 35 || h >= 330))         return 'bg'; // bolsa plástico roja
-  if (s > 65)                                  return 'bg'; // cualquier color muy saturado
-  if (l < 13)                                  return 'bg'; // sombras oscuras
-  if (l > 91)                                  return 'bg'; // sobreexposición/reflejos
-
-  /* ── Grasa / recorte correcto ── */
-  if (s < 18 && l >= 42)                       return 'grasa'; // blanco-crema puro
-  if (s < 30 && l >= 70)                       return 'grasa'; // blanco con leve tinte
-
-  /* ── Pechuga (carne rosa-salmón) ── */
-  const isPink = (h >= 318 || h <= 28);
-  if (isPink && s >= 9 && s <= 56 && l >= 40 && l <= 84) return 'pechuga';
-  // Rosa-malva tenue (iluminación fría)
-  if (h >= 295 && h < 318 && s >= 9 && s <= 38 && l >= 44 && l <= 78) return 'pechuga';
-
+  // Excluir fondo: caja amarilla
+  if (h>=38 && h<=68 && s>38 && l>33)     return 'bg';
+  // Excluir bolsa roja (saturación alta)
+  if (s>56 && (h<=35 || h>=330))           return 'bg';
+  if (s>65)                                return 'bg';
+  // Sombras y sobreexposición
+  if (l<13)                                return 'bg';
+  if (l>91)                                return 'bg';
+  // Grasa / recorte correcto (blanco-crema)
+  if (s<18 && l>=42)                       return 'grasa';
+  if (s<30 && l>=70)                       return 'grasa';
+  // Pechuga (rosa-salmón)
+  const isPink = (h>=318 || h<=28);
+  if (isPink && s>=9 && s<=56 && l>=40 && l<=84) return 'pechuga';
+  if (h>=295 && h<318 && s>=9 && s<=38 && l>=44 && l<=78) return 'pechuga';
   return 'bg';
 }
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    PIXEL PROCESSING
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════ */
 function processPixels(imageData, w, h) {
-  const src     = imageData.data;
-  const overlay = new Uint8ClampedArray(src.length);
-  let nPechuga  = 0, nGrasa = 0;
-
-  for (let i = 0; i < src.length; i += 4) {
-    const r = src[i], g = src[i+1], b = src[i+2];
-    const cls = classifyPixel(r, g, b);
-    if (cls === 'pechuga') {
-      nPechuga++;
-      overlay[i]   = Math.min(255, r * 0.35 + 195);
-      overlay[i+1] = Math.round(g * 0.35);
-      overlay[i+2] = Math.round(b * 0.35);
-      overlay[i+3] = 255;
-    } else if (cls === 'grasa') {
-      nGrasa++;
-      overlay[i]   = Math.round(r * 0.35);
-      overlay[i+1] = Math.round(g * 0.35);
-      overlay[i+2] = Math.min(255, b * 0.35 + 195);
-      overlay[i+3] = 255;
+  const src=imageData.data, overlay=new Uint8ClampedArray(src.length);
+  let nP=0, nG=0;
+  for (let i=0; i<src.length; i+=4) {
+    const r=src[i], g=src[i+1], b=src[i+2];
+    const cls=classifyPixel(r,g,b);
+    if(cls==='pechuga'){
+      nP++;
+      overlay[i]=Math.min(255,r*.35+195); overlay[i+1]=Math.round(g*.35);
+      overlay[i+2]=Math.round(b*.35);     overlay[i+3]=255;
+    } else if(cls==='grasa'){
+      nG++;
+      overlay[i]=Math.round(r*.35);       overlay[i+1]=Math.round(g*.35);
+      overlay[i+2]=Math.min(255,b*.35+195); overlay[i+3]=255;
     } else {
-      overlay[i]   = Math.round(r * 0.50);
-      overlay[i+1] = Math.round(g * 0.50);
-      overlay[i+2] = Math.round(b * 0.50);
-      overlay[i+3] = 255;
+      overlay[i]=Math.round(r*.50); overlay[i+1]=Math.round(g*.50);
+      overlay[i+2]=Math.round(b*.50); overlay[i+3]=255;
     }
   }
-
-  const nTotal      = w * h;
-  const nClassified = nPechuga + nGrasa;
+  const nTot=w*h, nCls=nP+nG;
   return {
-    pctPechuga: nClassified > 0 ? (nPechuga / nClassified) * 100 : 0,
-    pctGrasa:   nClassified > 0 ? (nGrasa   / nClassified) * 100 : 0,
-    coverage:   nTotal      > 0 ? (nClassified / nTotal)   * 100 : 0,
+    pctPechuga: nCls>0 ? nP/nCls*100 : 0,
+    pctGrasa:   nCls>0 ? nG/nCls*100 : 0,
+    coverage:   nTot>0 ? nCls/nTot*100 : 0,
     overlay
   };
 }
 
-/* ═══════════════════════════════════════════
-   ANÁLISIS PRINCIPAL
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   ANÁLISIS
+═══════════════════════════════════════════════════ */
 function analyzeImage() {
   if (!pendingDataUrl) return;
-
-  // Capturar valores del formulario
-  const operario = $('inpOperario').value.trim();
-  const posicion = $('selPosicion').value;
-  const lado     = $('selLado').value;
-  saveFormDefaults();
-
+  $('loadingTxt').textContent = 'Analizando imagen…';
   $('loadingOverlay').classList.add('active');
   $('btnAnalyze').disabled = true;
 
@@ -530,306 +789,244 @@ function analyzeImage() {
     img.onload = () => {
       try {
         const [w, h] = scaledDims(img.width, img.height, MAX_PX);
-        const proc   = $('procCanvas');
-        proc.width   = w; proc.height = h;
-        const ctx    = proc.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
+        const proc = $('procCanvas');
+        proc.width=w; proc.height=h;
+        const ctx=proc.getContext('2d');
+        ctx.drawImage(img,0,0,w,h);
+        const imgData = ctx.getImageData(0,0,w,h);
+        const result  = processPixels(imgData,w,h);
 
-        const imgData = ctx.getImageData(0, 0, w, h);
-        const result  = processPixels(imgData, w, h);
+        const seg=$('segCanvas');
+        seg.width=w; seg.height=h;
+        seg.getContext('2d').putImageData(new ImageData(result.overlay,w,h),0,0);
 
-        // Segmentación visual
-        const seg     = $('segCanvas');
-        seg.width     = w; seg.height = h;
-        seg.getContext('2d').putImageData(new ImageData(result.overlay, w, h), 0, 0);
-
-        const timestamp = new Date().toISOString();
-        displayResults(result, { operario, posicion, lado, timestamp });
-        saveHistory({ ...result, operario, posicion, lado, timestamp }, pendingDataUrl);
-
+        const ts = new Date().toISOString();
+        displayResults(result, selectedPos, ts);
+        saveHistory({...result, posicion:selectedPos, ts}, pendingDataUrl);
+        // Actualizar grid: la posición ahora está "done"
+        refreshAll();
       } catch(err) {
         console.error(err);
         alert('Error al procesar la imagen. Inténtalo de nuevo.');
       }
       $('loadingOverlay').classList.remove('active');
-      $('btnAnalyze').disabled = false;
+      $('btnAnalyze').disabled=false;
     };
-    img.src = pendingDataUrl;
+    img.src=pendingDataUrl;
   }, 60);
 }
 
-function scaledDims(w, h, maxPx) {
-  if (w <= maxPx && h <= maxPx) return [w, h];
-  const r = Math.min(maxPx / w, maxPx / h);
-  return [Math.round(w * r), Math.round(h * r)];
+function scaledDims(w,h,mx){
+  if(w<=mx&&h<=mx) return [w,h];
+  const r=Math.min(mx/w,mx/h);
+  return [Math.round(w*r),Math.round(h*r)];
 }
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    DISPLAY RESULTS
-═══════════════════════════════════════════ */
-function displayResults(result, meta) {
-  const { pctPechuga, pctGrasa, coverage } = result;
-  const { operario, posicion, lado, timestamp } = meta;
-
+═══════════════════════════════════════════════════ */
+function displayResults(result, pos, ts) {
+  const {pctPechuga,pctGrasa,coverage}=result;
   show('resultsCard');
 
-  // Color semáforo
-  const color = pctPechuga > 35 ? '#e63946' : pctPechuga > 20 ? '#d97706' : '#16a34a';
+  const color = pctPechuga>35 ? '#e63946' : pctPechuga>20 ? '#d97706' : '#16a34a';
+  const C=2*Math.PI*46;
+  $('gaugeFill').style.stroke=$('gaugeFill').style.stroke; // force repaint
+  $('gaugeFill').style.stroke           = color;
+  $('gaugeFill').style.strokeDasharray  = C;
+  $('gaugeFill').style.strokeDashoffset = C*(1-pctPechuga/100);
+  $('gaugePct').textContent=pctPechuga.toFixed(1)+'%';
+  $('gaugePct').style.color=color;
+  $('valPechuga').textContent=pctPechuga.toFixed(1)+'%';
+  $('valPechuga').style.color=color;
+  $('valGrasa').textContent=pctGrasa.toFixed(1)+'%';
 
-  // Gauge (C = 2π×46 ≈ 289)
-  const C = 2 * Math.PI * 46;
-  $('gaugeFill').style.stroke            = color;
-  $('gaugeFill').style.strokeDasharray   = C;
-  $('gaugeFill').style.strokeDashoffset  = C * (1 - pctPechuga / 100);
-  $('gaugePct').textContent  = pctPechuga.toFixed(1) + '%';
-  $('gaugePct').style.color  = color;
+  const covColor=coverage>=25?'#16a34a':coverage>=12?'#d97706':'#e63946';
+  $('covVal').textContent=coverage.toFixed(0)+'%';
+  $('covVal').style.color=covColor;
+  $('covBar').style.width=Math.min(100,coverage)+'%';
+  $('covBar').style.background=covColor;
+  $('covWarning').style.display=coverage<12?'block':'none';
 
-  $('valPechuga').textContent  = pctPechuga.toFixed(1) + '%';
-  $('valPechuga').style.color  = color;
-  $('valGrasa').textContent    = pctGrasa.toFixed(1) + '%';
+  // Meta posición
+  const posLabel = pos ? `Posición ${pos}` : 'Sin posición';
+  $('resultPosBadge').textContent = pos || '—';
+  $('resultPosBadge').style.background = color;
+  $('resultPosNum').textContent = posLabel;
+  const d=new Date(ts);
+  $('resultFecha').textContent = d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})
+    +' · '+d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
 
-  const covColor = coverage >= 25 ? '#16a34a' : coverage >= 12 ? '#d97706' : '#e63946';
-  $('covVal').textContent      = coverage.toFixed(0) + '%';
-  $('covVal').style.color      = covColor;
-  $('covBar').style.width      = Math.min(100, coverage) + '%';
-  $('covBar').style.background = covColor;
-  $('covWarning').style.display = coverage < 12 ? 'block' : 'none';
-
-  // Metadatos del resultado
-  const d = new Date(timestamp);
-  const fechaStr = d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'});
-  const horaStr  = d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
-  $('metaOperario').textContent = operario  || '—';
-  $('metaFecha').textContent    = `${fechaStr} · ${horaStr}`;
-  $('metaPosicion').textContent = posicion  ? `Pos. ${posicion}` : '—';
-  $('metaLado').textContent     = lado      || '—';
-
-  setTimeout(() => $('resultsCard').scrollIntoView({ behavior:'smooth', block:'start' }), 120);
+  setTimeout(()=>$('resultsCard').scrollIntoView({behavior:'smooth',block:'start'}),120);
 }
 
-/* ═══════════════════════════════════════════
-   HISTORY — guardar
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   HISTORY — guardar / renderizar
+═══════════════════════════════════════════════════ */
 function saveHistory(result, dataUrl) {
-  const hist = loadHistoryData();
+  const hist=loadHistoryData();
   hist.unshift({
-    ts:         result.timestamp,
-    operario:   result.operario  || '',
-    posicion:   result.posicion  || '',
-    lado:       result.lado      || '',
+    ts:         result.ts,
+    posicion:   result.posicion || null,
     pctPechuga: result.pctPechuga,
     pctGrasa:   result.pctGrasa,
     coverage:   result.coverage,
-    thumb:      makeThumb(dataUrl, 80)
+    thumb:      makeThumb(dataUrl,80)
   });
-  if (hist.length > MAX_HISTORY) hist.splice(MAX_HISTORY);
-  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); } catch(e) {}
+  if(hist.length>MAX_HISTORY) hist.splice(MAX_HISTORY);
+  try { localStorage.setItem(HISTORY_KEY,JSON.stringify(hist)); } catch(e){}
   renderHistory();
 }
 
-function makeThumb(dataUrl, size) {
+function makeThumb(dataUrl,size){
   try {
-    const c = document.createElement('canvas');
-    c.width = c.height = size;
-    const img = new Image(); img.src = dataUrl;
-    c.getContext('2d').drawImage(img, 0, 0, size, size);
-    return c.toDataURL('image/jpeg', 0.5);
+    const c=document.createElement('canvas');
+    c.width=c.height=size;
+    const img=new Image(); img.src=dataUrl;
+    c.getContext('2d').drawImage(img,0,0,size,size);
+    return c.toDataURL('image/jpeg',.5);
   } catch { return null; }
 }
 
-function loadHistoryData() {
-  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); }
+function loadHistoryData(){
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]'); }
   catch { return []; }
 }
 
-/* ═══════════════════════════════════════════
-   HISTORY — renderizar
-═══════════════════════════════════════════ */
 function renderHistory() {
-  const hist = loadHistoryData();
-  const container = $('histItems');
-  container.innerHTML = '';
+  const hist=loadHistoryData();
+  const container=$('histItems');
+  container.innerHTML='';
 
-  if (hist.length === 0) {
-    container.innerHTML = '<div class="hist-empty">Sin registros aún</div>';
+  if(hist.length===0){
+    container.innerHTML='<div class="hist-empty">Sin registros aún</div>';
     return;
   }
 
   hist.forEach(item => {
-    const d       = new Date(item.ts);
-    const fecha   = d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'2-digit'});
-    const hora    = d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
-    const pct     = item.pctPechuga;
-    const color   = pct > 35 ? '#e63946' : pct > 20 ? '#d97706' : '#16a34a';
-    const metaStr = [
-      item.posicion ? `Pos. ${item.posicion}` : null,
-      item.lado     || null
-    ].filter(Boolean).join(' · ') || '—';
+    const d=new Date(item.ts);
+    const fecha=d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'2-digit'});
+    const hora=d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+    const pct=item.pctPechuga;
+    const color=pct>35?'#e63946':pct>20?'#d97706':'#16a34a';
 
-    const div = document.createElement('div');
-    div.className = 'hist-item';
-    div.innerHTML = `
+    const div=document.createElement('div');
+    div.className='hist-item';
+    div.innerHTML=`
       ${item.thumb
         ? `<img src="${item.thumb}" class="hist-thumb" alt="">`
         : `<div class="hist-thumb-ph">📦</div>`}
+      <div class="hist-pos-badge" style="background:${color}">${item.posicion||'?'}</div>
       <div class="hist-info">
-        <div class="hist-operario">${escHtml(item.operario) || '<span style="color:#9ca3af;font-weight:400">Sin operario</span>'}</div>
-        <div class="hist-meta">${escHtml(metaStr)}</div>
         <div class="hist-date">${fecha} · ${hora}</div>
+        <div class="hist-time">Posición ${item.posicion||'—'}</div>
       </div>
       <div class="hist-right">
-        <div class="hist-pct-lbl">pechuga</div>
-        <div class="hist-pct-pechuga" style="color:${color}">${pct.toFixed(1)}%</div>
-        <div class="hist-pct-lbl" style="margin-top:3px">grasa</div>
-        <div class="hist-pct-grasa">${item.pctGrasa.toFixed(1)}%</div>
+        <div class="hist-lbl">pechuga</div>
+        <div class="hist-pechuga" style="color:${color}">${pct.toFixed(1)}%</div>
+        <div class="hist-lbl" style="margin-top:2px">grasa</div>
+        <div class="hist-grasa">${item.pctGrasa.toFixed(1)}%</div>
       </div>`;
     container.appendChild(div);
   });
 
-  const btn = document.createElement('button');
-  btn.className = 'btn-ghost';
-  btn.textContent = '🗑 Borrar historial';
-  btn.onclick = () => {
-    if (confirm('¿Borrar todo el historial? Esta acción no se puede deshacer.')) {
+  const btn=document.createElement('button');
+  btn.className='btn-ghost';
+  btn.textContent='🗑 Borrar historial';
+  btn.onclick=()=>{
+    if(confirm('¿Borrar todo el historial?')){
       localStorage.removeItem(HISTORY_KEY);
-      renderHistory();
+      refreshAll();
     }
   };
   container.appendChild(btn);
 }
 
-function toggleHistory() {
-  historyOpen = !historyOpen;
-  $('histItems').style.display  = historyOpen ? '' : 'none';
-  $('histToggle').textContent   = historyOpen ? '▼' : '▶';
+function toggleHistory(){
+  historyOpen=!historyOpen;
+  $('histItems').style.display=historyOpen?'':'none';
+  $('histToggle').textContent=historyOpen?'▼':'▶';
 }
 
-function escHtml(str) {
-  return String(str || '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+/* ═══════════════════════════════════════════════════
+   EXPORTAR EXCEL
+═══════════════════════════════════════════════════ */
+let xlsxLoaded=false;
 
-/* ═══════════════════════════════════════════
-   EXPORTAR A EXCEL (.xlsx)
-   Usa SheetJS — se carga bajo demanda
-═══════════════════════════════════════════ */
-let xlsxLoaded = false;
-
-function loadXLSX() {
-  return new Promise((resolve, reject) => {
-    if (xlsxLoaded || typeof XLSX !== 'undefined') { xlsxLoaded = true; resolve(); return; }
-    const s    = document.createElement('script');
-    s.src      = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
-    s.onload   = () => { xlsxLoaded = true; resolve(); };
-    s.onerror  = () => reject(new Error('No se pudo cargar SheetJS'));
+function loadXLSX(){
+  return new Promise((res,rej)=>{
+    if(xlsxLoaded||typeof XLSX!=='undefined'){xlsxLoaded=true;res();return;}
+    const s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    s.onload=()=>{xlsxLoaded=true;res();};
+    s.onerror=()=>rej(new Error('No se pudo cargar SheetJS'));
     document.head.appendChild(s);
   });
 }
 
-async function exportToExcel() {
-  const hist = loadHistoryData();
-  if (hist.length === 0) {
-    alert('No hay registros para exportar.');
-    return;
-  }
+async function exportToExcel(){
+  const hist=loadHistoryData();
+  if(hist.length===0){ alert('No hay registros para exportar.'); return; }
 
-  $('loadingTxt').textContent = 'Generando Excel…';
+  $('loadingTxt').textContent='Generando Excel…';
   $('loadingOverlay').classList.add('active');
 
   try {
     await loadXLSX();
 
-    /* ── Construir datos ── */
-    const headers = [
-      'Fecha', 'Hora', 'Nombre Operario',
-      'Posición en Línea', 'Lado Línea',
-      '% Pechuga', '% Grasa', 'Cobertura (%)'
-    ];
-
-    const rows = hist.map(item => {
-      const d = new Date(item.ts);
+    const headers=['Fecha','Hora','Posición (1-40)','% Pechuga','% Grasa','Cobertura (%)'];
+    const rows=hist.map(item=>{
+      const d=new Date(item.ts);
       return [
-        d.toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'}),
-        d.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'}),
-        item.operario  || '',
-        item.posicion  || '',
-        item.lado      || '',
+        d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'}),
+        d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}),
+        item.posicion||'',
         parseFloat(item.pctPechuga.toFixed(1)),
         parseFloat(item.pctGrasa.toFixed(1)),
         parseFloat(item.coverage.toFixed(0))
       ];
     });
 
-    /* ── Crear workbook ── */
-    const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+    const ws=XLSX.utils.aoa_to_sheet([headers,...rows]);
+    ws['!cols']=[{wch:12},{wch:8},{wch:16},{wch:14},{wch:10},{wch:14}];
 
-    // Anchura de columnas
-    ws['!cols'] = [
-      {wch:12},{wch:8},{wch:22},{wch:17},{wch:12},
-      {wch:12},{wch:10},{wch:15}
-    ];
+    // Hoja de resumen por posición
+    const byPos={};
+    hist.forEach(item=>{
+      const k=item.posicion||'Sin pos';
+      if(!byPos[k]) byPos[k]=[];
+      byPos[k].push(item.pctPechuga);
+    });
+    const resHeaders=['Posición','Nº Análisis','% Pechuga Medio','% Pechuga Máx.'];
+    const resRows=Object.entries(byPos).map(([pos,vals])=>{
+      const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+      return [pos,vals.length,parseFloat(avg.toFixed(1)),parseFloat(Math.max(...vals).toFixed(1))];
+    }).sort((a,b)=>parseInt(a[0])-parseInt(b[0]));
+    const ws2=XLSX.utils.aoa_to_sheet([resHeaders,...resRows]);
+    ws2['!cols']=[{wch:12},{wch:14},{wch:20},{wch:16}];
 
-    // Estilo de cabeceras (fondo azul oscuro, texto blanco) — solo en xlsx
-    const range = XLSX.utils.decode_range(ws['!ref']);
-    for (let C = range.s.c; C <= range.e.c; C++) {
-      const cell = XLSX.utils.encode_cell({r:0, c:C});
-      if (ws[cell]) {
-        ws[cell].s = {
-          font: { bold: true, color: { rgb: 'FFFFFF' } },
-          fill: { fgColor: { rgb: '111827' } },
-          alignment: { horizontal: 'center' }
-        };
-      }
-    }
+    const wb=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,'Mermas Pechuga',ws);
+    XLSX.utils.book_append_sheet(wb,'Resumen por Posición',ws2);
 
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Mermas Pechuga');
-
-    // Hoja de resumen
-    const resumen = buildResumenSheet(hist);
-    XLSX.utils.book_append_sheet(wb, resumen, 'Resumen');
-
-    const fecha = new Date().toISOString().split('T')[0];
-    XLSX.writeFile(wb, `mermas_pechuga_${fecha}.xlsx`);
-
-  } catch(err) {
+    XLSX.writeFile(wb,`mermas_pechuga_${todayStr()}.xlsx`);
+  } catch(err){
     console.error(err);
     alert('Error al generar el Excel. Verifica tu conexión a internet (necesaria la primera vez).');
   }
-
-  $('loadingTxt').textContent = 'Analizando imagen…';
+  $('loadingTxt').textContent='Analizando imagen…';
   $('loadingOverlay').classList.remove('active');
 }
 
-function buildResumenSheet(hist) {
-  // Agrupar por operario
-  const byOp = {};
-  hist.forEach(item => {
-    const key = item.operario || '(sin nombre)';
-    if (!byOp[key]) byOp[key] = [];
-    byOp[key].push(item.pctPechuga);
-  });
-
-  const rows = [
-    ['RESUMEN POR OPERARIO', '', '', ''],
-    ['', '', '', ''],
-    ['Nombre Operario', 'Nº Análisis', '% Pechuga Medio', '% Pechuga Máx.']
-  ];
-
-  Object.entries(byOp).forEach(([op, vals]) => {
-    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-    const max = Math.max(...vals);
-    rows.push([op, vals.length, parseFloat(avg.toFixed(1)), parseFloat(max.toFixed(1))]);
-  });
-
-  rows.push(['', '', '', '']);
-  rows.push(['TOTAL REGISTROS', hist.length, '', '']);
-
-  const ws = XLSX.utils.aoa_to_sheet(rows);
-  ws['!cols'] = [{wch:24},{wch:14},{wch:20},{wch:16}];
-  return ws;
-}
+/* ═══════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', ()=>{
+  refreshAll();
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  }
+});
 </script>
 </body>
 </html>
