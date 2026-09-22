@@ -272,7 +272,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
       <span id="chipTotal">40</span>
       <span>✓</span>
     </div>
-    <div class="ver-badge">v3.1</div>
+    <div class="ver-badge">v3.2</div>
   </div>
 </div>
 
@@ -419,7 +419,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 /* ═══════════════════════════════════════════════════
    CONFIG
 ═══════════════════════════════════════════════════ */
-const APP_VERSION  = 'v3.1';
+const APP_VERSION  = 'v3.2';
 const HISTORY_KEY  = 'analista_pechuga_v1'; // mantiene historial de v2
 const SESSION_KEY  = 'analista_session_v3';
 const MAX_HISTORY  = 50;
@@ -726,24 +726,21 @@ function rgbToHsl(r, g, b) {
 
 function classifyPixel(r, g, b) {
   const [h, s, l] = rgbToHsl(r, g, b);
-  // Excluir fondo: caja amarilla
-  if (h>=38 && h<=68 && s>38 && l>33)     return 'bg';
-  // Excluir bolsa roja (saturación alta)
-  if (s>56 && (h<=35 || h>=330))           return 'bg';
-  if (s>65)                                return 'bg';
-  // Sombras y sobreexposición
-  if (l<13)                                return 'bg';
-  if (l>91)                                return 'bg';
-  // Grasa / recorte correcto — calibrado a ~27% pechuga (ground truth DOLZ)
-  // Captura blanco-crema puro Y rosa-palido tenue (grasa con ligero tinte sanguineo)
-  if (s < 24 && l >= 42)                          return 'grasa'; // fue s<18
-  if (s < 38 && l >= 68)                          return 'grasa'; // fue s<30 && l>=70
 
-  // Pechuga — solo rosa DISTINTIVO (excluye rosa muy desaturado = grasa con tinte)
-  const isPink = (h >= 318 || h <= 28);
-  if (isPink && s >= 20 && s <= 55 && l >= 38 && l <= 83) return 'pechuga'; // fue s>=9
-  if (h >= 296 && h < 318 && s >= 16 && s <= 36 && l >= 44 && l <= 78) return 'pechuga'; // fue s>=9
-  return 'bg';
+  // ── Excluir fondo ──────────────────────────────────
+  if (h>=38 && h<=68 && s>38 && l>33)   return 'bg'; // caja amarilla DOLZ
+  if (s>56 && (h<=35 || h>=330))         return 'bg'; // bolsa plástico roja/naranja
+  if (s>65)                              return 'bg'; // cualquier color muy saturado
+  if (l<13)                              return 'bg'; // sombras
+  if (l>91)                              return 'bg'; // sobreexposición/reflejos
+
+  // ── Clasificar contenido por diferencia R-B ────────
+  // Motor calibrado con ground truth 27% (DOLZ, sept. 2026)
+  // Pechuga (carne rosa-salmón): canal R significativamente mayor que B
+  // Grasa (recorte correcto, blanco-crema): R ≈ B, diferencia pequeña
+  const rbDiff = r - b;   // 0-255: positivo = más rojo, negativo = más azul
+  if (rbDiff > 27) return 'pechuga';
+  return 'grasa';
 }
 
 /* ═══════════════════════════════════════════════════
